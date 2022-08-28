@@ -7,7 +7,16 @@ input{
     transform: scale(1.2);
     cursor: pointer;
 }
-
+.btn-primary {
+    color: #fff;
+    background-color:crimson;
+    border-color: crimson;
+}
+.btn-primary2 {
+    color: #fff;
+    background-color:lightgreen;
+    border-color: green;
+}
 .child-div 
  {
     max-width: fit-content;

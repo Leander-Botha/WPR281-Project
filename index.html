@@ -226,7 +226,13 @@
                     <div id="bugs">
                         <button id="showAllTickets" onclick="ShowAllTickets()" >Show all Tickets</button>
                         <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
+
                         
+                                        <select name="Projectfilter" id="projectListFilter" selected value="" >
+                                            <option value="none" selected disabled hidden>Filter by Project</option>
+                                        </select> 
+                       
+
                         <form id="ticketSubmitForm">
                         <div id="addNewTicket">
                             <h1>Create a bug</h1>
@@ -241,12 +247,16 @@
                                     </li>
                                     <li>
                                         <label for="projectList">Add to Project</label>
-                                        <select name="ProjectList" id="projectList" value=""></select>                         
+                                        <select name="ProjectList" id="projectList" value="">
+                                            <option value="none" selected disabled hidden>Select a Project</option>
+                                        </select>                         
                                     </li>   
 
                                     <li>
                                         <label for="assignedEmployees">Assign Employee to fix bug:</label>
-                                        <select name="AssignedEmployees" id="assignedEmployees" value=""></select>
+                                        <select name="AssignedEmployees" id="assignedEmployees" value="">
+                                            <option value="none" selected disabled hidden>select option</option>
+                                        </select>
                                     </li>
                                     <li>
                                         <label for="ticketSum">Add ticket Summary:</label>
@@ -265,6 +275,7 @@
                                     <li>
                                         <label for="bugfounder">Who found the bug:</label>  
                                         <select name="bugfounder" id="bugFounder" placeholder="choose">
+                                            <option value="none" selected disabled hidden>select option</option>
                                         </select>
                                     </li>
                                         <label for="targdate">When should the bug be resolved:</label>  

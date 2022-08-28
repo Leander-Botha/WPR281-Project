@@ -4,6 +4,7 @@ function populateFormValues()
     const bugFounderList = document.getElementById("bugFounder");
     const employeeList = document.getElementById("assignedEmployees");
     const projectList = document.getElementById("projectList");
+    const projectListFilter = document.getElementById("projectListFilter");
 
     let theUsers = JSON.parse(localStorage.getItem('theUsers'));
     let theProjects = JSON.parse(localStorage.getItem('theProjects'));
@@ -30,6 +31,13 @@ function populateFormValues()
         option.value = project.name;
         option.innerHTML = project.name;
         projectList.appendChild(option);
+    }
+    for(const project of theProjects)
+    {
+        let option = document.createElement("option");    
+        option.value = project.name;
+        option.innerHTML = project.name;
+        projectListFilter.appendChild(option);
     }
     
 }
@@ -123,6 +131,7 @@ function submitTicket() {
                           '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
                           '<button onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
                           '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
+                          '<button onclick = "OpenTicket(\''+id+'\')" class = "btn btn-primary2">Open'+"</button>" + "     " + 
 
                            '</div>';
     }
@@ -148,6 +157,20 @@ function DeleteTicket(ticketID)
     window.location.reload(true);
     console.log("Deleted: " + ticketID)
 }
+// filter on click
+/*document.getElementById("projectListFilter").onchange = function()
+{
+    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    for(let i=0; i<ticketArray.length; i++) 
+    {
+        if(ticketArray[i].projectName==this.value)
+        {
+            console.log("yes");//hy log actually yes so
+                                // hy kan sien hoeveel tickets daai project het maar ek weni hoe ek sal kan display nie
+        }
+    }
+    
+};*/
 
 // Display ticket on click
 
@@ -270,6 +293,22 @@ function ViewMoreDetails()
 } 
 
 
+function OpenTicket(ticketID)
+{
+    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    for (let i = 0; i < ticketArray.length; i++) 
+    {
+        if (ticketArray[i].id == ticketID)
+        {
+            ticketArray[i].status ="Open";
+            ticketArray[i].actualdate = "Pending.....";
+        }
+    }
+    console.log("opened");
+    localStorage.setItem('Tickets', JSON.stringify(ticketArray));
+    $("#here").load(" #here > *");
+}
+
 function CloseTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
@@ -283,6 +322,7 @@ function CloseTicket(ticketID)
     }
     console.log("Closed");
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
+    location.reload();
 }
 
 
@@ -291,7 +331,11 @@ function CloseTicketDetails()
     document.getElementById("ticketDetails").style.display="none";
 }
 
-
+function editTicket()
+{
+//contentEditable="true"   //maak dat jy op die input kan click en weer begin type maar ja 
+//editing kon ek nog nie uitfigure nie maar dis iets 
+}
 
 
 
