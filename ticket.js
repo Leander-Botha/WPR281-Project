@@ -54,7 +54,7 @@ function submitTicket() {
      let ticketdescription = document.getElementById("ticketdescription").value;
      let ticketPriority = document.getElementById("ticketPriority").value;
      let targdate = document.getElementById("targdate").value;
-     let ticketSubmitDate =  new Date().toDateString;
+     let ticketSubmitDate =  new Date().toDateString();
      let bugFounder = document.getElementById("bugFounder").value;
      //let actdate = document.getElementById("actualdate").value;
      //let resolsum = document.getElementById("resolsummary").value;
