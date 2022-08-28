@@ -1,8 +1,35 @@
+
+function populateFormValues()
+{
+    const bugFounderList = document.getElementById("bugFounder");
+    const employeeList = document.getElementById("assignedEmployees");
+    
+    let theUsers = JSON.parse(localStorage.getItem('theUsers'))
+    for(const newUser of theUsers)
+    {   
+        let option = document.createElement("option");    
+        option.value = newUser.Name;
+        option.innerHTML = newUser.Name;
+        bugFounderList.appendChild(option);
+    }
+
+    for(const newUser of theUsers)
+    {
+        let option = document.createElement("option");    
+        option.value = newUser.Name;
+        option.innerHTML = newUser.Name;
+        employeeList.appendChild(option);
+    }
+    
+}
+
+
 // create a ticket
 function createBug(){
     //document.getElementById("showAllTickets").style.display="none"; 
     //document.getElementById("addNewTicket").style.display="block";
     DisplayTicket(ticketArray);
+    
 }
 
 
@@ -166,7 +193,7 @@ function DisplayTicket(ticketArray)
 // Show all tickets
 function ShowAllTickets(){
 
-    
+    populateFormValues()
     document.getElementById("addNewTicket").style.display="none"; 
     document.getElementById("showAllTickets").style.display="block";
 
