@@ -1,39 +1,47 @@
-
-let users = [
-    {
-        id: 1,
-        name: 'John',
-        surname: "Cena",
-        email: 'john@gmail.com',
-        username: "Squiggly puff"
-        },
-        {id: 2,
-        name: 'Koos',
-        surname: "Visagie",
-        email: '123@gmail.com',
-        username: "Sookie"
-        },
-        {
-        id: 3,
-        name: 'Zander',
-        surname: "HaasBroek",
-        email: 'haas@gmail.com',
-        username: "Vet Haas"
-        }
-
-]
+// Add new user
+function AddUser() {
     
+    // let len = users.length;
+    // let userId = len +1;
+    let firstName = document.getElementById("firstName").value;
+    let surname = document.getElementById("userSurname").value;
+    let userEMail = document.getElementById("userEMail").value;
+    let username = document.getElementById("username").value;
+
+    let newUser = {
+        // Id : id,
+        Name : firstName,
+        Surname : surname,
+        Email : userEMail,
+        Username : username
+    }
+
+    if (localStorage.getItem('theUsers') == null){
+        let theUsers = [];
+        theUsers.push(newUser);
+        localStorage.setItem('theUsers', JSON.stringify(theUsers));
+    }
+    else{
+        let theUsers = JSON.parse(localStorage.getItem('theUsers'));
+        theUsers.push(newUser);
+        localStorage.setItem('theUsers', JSON.stringify(theUsers));
+
+    }
+
+    resetAddUser();
+}
+
+
 // Show All Emp
 function ShowEmp() {
     
 	document.getElementById("addEmp").style.display="none"; 
     document.getElementById("empDetails").style.display="block";
 	
-    
-	for (i=0; i<users.length; i++)
+    let theUsers = JSON.parse(localStorage.getItem('theUsers'))
+	for (i=0; i<theUsers.length; i++)
 	{
-	    console.log(users[i].id);
-	    console.log(users[i].name);
+	    
 	    AddNew(i);
 	        
 	}
@@ -43,47 +51,16 @@ function ShowEmp() {
 	    const newDiv = document.createElement("div");
 	    newDiv.classList.add("divEMP");
 	    DivContainer.appendChild(newDiv);
-	    newDiv.innerHTML = "<h1 >"+"Username: "+ users[n].username +"</h1>"+"<br>"
-	                     +"Name: "+ users[n].name +"<br>"
-	                    +"Surname: "+ users[n].surname +"<br>"
-	                    +"Email: "+ users[n].email
+	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"
+	                     +"Name: "+ theUsers[n].Name +"<br>"
+	                    +"Surname: "+ theUsers[n].Surname +"<br>"
+	                    +"Email: "+ theUsers[n].Email
 	                    +"<br>"
-	                    +"<button>"+"click me"+"</button>";
+	                    // +"<button>"+"click me"+"</button>";
       
 	}
 	
 }
-
-
-
-// Add new user
-function AddUser() {
-    const DivContainer = document.getElementById("empDetails");
-      
-    function User(id,name,surname,email,username)
-    {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.username = username;
-    }
-    
-    let len = users.length;
-    let userId = len +1;
-    let firstName = document.getElementById("firstName").value;
-    let surname = document.getElementById("userSurname").value;
-    let userEMail = document.getElementById("userEMail").value;
-    let username = document.getElementById("username").value;
-
-    let newUser = new User(userId,firstName,surname, userEMail, username);
-    console.log(newUser);
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-
-    resetAddUser();
-}
-
 
 
 // Reset inputs
@@ -103,29 +80,4 @@ function NewUser() {
 }
 
 
-function populateFormUsers()
-{
-    const bugFounderList = document.getElementById("bugFounder");
-    const employeeList = document.getElementById("assignedEmployees");
 
-    for(const User of users)
-    {   
-        let option = document.createElement("option");    
-        option.value = User.name;
-        option.innerHTML = User.name;
-        bugFounderList.appendChild(option);
-    }
-
-    for(const User of users)
-    {   
-        let option = document.createElement("option");    
-        option.value = User.name;
-        option.innerHTML = User.name;
-        employeeList.appendChild(option);
-    }
- 
-}
-
-// ----------------------- Running functions on website startup ------------------------
-
-populateFormUsers();
