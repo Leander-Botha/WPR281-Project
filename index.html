@@ -227,7 +227,7 @@
                     </div>
 
                     <div id="bugs">
-                        <button id="showAllTickets" onclick="fetchTickets()" >Show all Tickets</button>
+                        <button id="showAllTickets" onclick="ShowAllTickets()" >Show all Tickets</button>
                         <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
                         
                         <form id="ticketSubmitForm">
@@ -270,7 +270,10 @@
                                         <select name="bugfounder" id="bugFounder" placeholder="choose">
                                         </select>
                                     </li>
-                                                                      
+                                        <label for="targdate">When should the bug be resolved:</label>  
+                                        <input type = "date" name="targdate" id="targdate">
+                                    </select>
+                                    </li>                              
                                     <li>
                                         <label for="ticketdescription">Add description:</label>
                                         <textarea id="ticketdescription" maxlength="255" cols="10" rows="2" placeholder="Add ticket Description"></textarea>
@@ -288,6 +291,8 @@
                             <div id="div-container"></div>
 
                             <div id="ticketDetails">
+                            <a name="#Detail-top"></a>
+                                <h5 id="ticketID"></h1>
                                 <h1 id="ticketTitle"></h1>
 
                                 <label for="projectname">ProjectName</label>
@@ -297,8 +302,8 @@
                                 <p id="identifiedBy"></p>
 
                                 
-                                <label for="lstassignedEmp">Assigned to: </label>
-                                <select name="" id="lstassignedEmp"></select>
+                                <label for="assignedEmp">Assigned to: </label>
+                                <p name="" id="assignedEmp"></p>
 
                                 <label for="detpriority">Priority level:</label>
                                 <p name="" id="detpriority"></p>
