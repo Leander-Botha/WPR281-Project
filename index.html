@@ -54,6 +54,7 @@
                     clearScreen()
                     document.getElementById('admin').style.display = 'block'
                     document.getElementById('heading').innerHTML = 'Admin'
+                    openForm() 
                     break;
                 case 5:
                     clearScreen()
@@ -166,11 +167,7 @@
                                     <label for="Surname">Surname:</label>
                                     <input type="text" id="userSurname">
                                   </li>
-                                  <li>
-                                    <label for="Surname">Password:</label>
-                                    <input type="text" id="userPass">
-                                  </li>
-                                  
+
                                   <li>
                                     <label for="Email">Email:</label>
                                     <input type="text" id="userEMail">
@@ -383,23 +380,19 @@
 
 
     <div class="Login-box" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form  class="form-container">
             <h2>Admin Login</h2>
             <div class="User-box">
-                <input type="text" name="" required="" >
+                <input type="text" id="username" >
                 <label>Username</label>
             </div>
             <div  class="User-box">
-                <input type="password" name="" required="" >
+                <input type="password" id="userPass" >
                 <label>password</label>
             </div>
-            <a href="#">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <button class="TransP" type="submit" onclick="closeForm()">Log on</button>
-            </a>
+            
+                <button class="TransP" type="submit" onclick="checkUserLogin()">Log on</button>
+           
 
             
         </form>
@@ -418,7 +411,7 @@
         })
     </script>
 
-    <!-- <script src="login.js"></script> -->
+    <script src="login.js"></script>
     <script src="emp.js"></script>
     <script src="projects.js"></script>
     <script src="ticket.js"></script>
