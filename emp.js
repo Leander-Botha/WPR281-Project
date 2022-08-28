@@ -29,11 +29,20 @@ function AddUser() {
     }
 
     resetAddUser();
+    ShowEmp();
 }
 
-
+let clickCountEMP = 0;
 // Show All Emp
 function ShowEmp() {
+    clickCountEMP++;
+    if(clickCountEMP > 1){
+        while (document.getElementById('employeeDiv') != null )  {
+            let removeDivs = document.getElementById("employeeDiv");
+            removeDivs.remove();
+        }
+        
+    }
     
 	document.getElementById("addEmp").style.display="none"; 
     document.getElementById("empDetails").style.display="block";
@@ -49,6 +58,7 @@ function ShowEmp() {
 	function AddNew(n) {
         const DivContainer = document.getElementById("empDetails");
 	    const newDiv = document.createElement("div");
+        newDiv.id = 'employeeDiv'
 	    newDiv.classList.add("child-div");
 	    DivContainer.appendChild(newDiv);
 	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"

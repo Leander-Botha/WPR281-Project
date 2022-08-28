@@ -23,11 +23,22 @@ function newProj() {
     }
 
     resetForm();
+    ShowProj();
 }  
 
-
+let clickCountProj = 0;
 // Show All projects
 function ShowProj() {
+    clickCountProj++;
+    if(clickCountProj> 1){
+        while (document.getElementById('projectDiv') != null )  {
+            let removeDivs = document.getElementById("projectDiv");
+            removeDivs.remove();
+        }
+        
+    }
+    
+    
     document.getElementById("newProj").style.display="none"; 
     document.getElementById("showAll").style.display="block";
     
@@ -43,7 +54,7 @@ function ShowProj() {
 function ShowAllProj(Name,desc) {
     const divProj = document.getElementById("showAll");
     const newDiv = document.createElement("div");
-    console.log("add");
+    newDiv.id = 'projectDiv';
     newDiv.classList.add("child-div");
     divProj.appendChild(newDiv);
     newDiv.innerHTML = "<h1 >"+"Name: "+ Name+"</h1>"+"<br>"
