@@ -1,36 +1,51 @@
 // User login validation
-let Users = 
+let Admin = 
     {
-        id: 1,
-        name: 'Admin',
-        surname: "Admin",
-        email: 'Admin@gmail.com',
-        username: "Admin123",
+        username: "Admin",
         password: "Admin123"
     };
 
     
 
    
-    checkUserLogin();
-    let btnSubmit = document.getElementById("login-btn");
-    btnSubmit.addEventListener("click",checkUserLogin);
-    function checkUserLogin() {
+let validLogin = false;
+function checkUserLogin() {
 
-        let dieNaam = document.getElementById("username").value;
-        let password = document.getElementById("userPass").value;
-        if(dieNaam == users.username && password == users.password)
-        {
-            console.log("User login successful");
-            alert('…ᘛ⁐̤ᕐᐷ')
+
+	let username = document.getElementById("username").value;
+	    let password = document.getElementById("userPass").value;
+	    if(username == Admin.username && password == Admin.password)
+	    {
+	        console.log("User login successful" + '…ᘛ⁐̤ᕐᐷ');
+	        validateLogin = true;
+	        closeForm()
+	    }
+	    else if (username == Admin.username && password != Admin.password)
+	    {
+            clearUserLogin()
+	        alert("User login failed  incorrect password");
+	        
+	    }
+	    else if (username != Admin.username && password == Admin.password)
+	    {
+	        clearUserLogin()
+            alert("User login failed  incorrect username");
+	        
+	    }
+        else{
+            clearUserLogin()
+            alert("User login failed  incorrect username & password");
+	        
         }
-        else if (dieNaam == users.username && password != users.password)
-        {
-            console.log("User login failed  incorrect password");
-        }
-        else if (dieNaam != users.username && password == users.password)
-        {
-            console.log("User login failed  incorrect username");
-        }
-    }
+        
+
+}
+
+function clearUserLogin(){
+    openForm()
+    document.getElementById("username").value = '';
+    document.getElementById("username").focus;
+    document.getElementById("userPass").value = '';
+}
+
     
