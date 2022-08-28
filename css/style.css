@@ -1,0 +1,33 @@
+.nav-item:hover{
+    transition: 100ms ease all;
+    background-color: #4666FF;
+    color: #303030;
+    cursor: pointer;
+}
+.nav-example:hover{
+    transition: 100ms ease all;
+    background-color: #BB86FC;
+    color: #303030;
+    cursor: pointer;
+}
+.icon{
+    width: 1rem;
+    margin-right: 1rem;
+}
+.footer-list{
+    list-style: none;
+}
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.side-nav{
+    max-width: 25rem;
+}
+@media only screen and (max-width: 900px) {
+    .icon {
+      display: none;
+    }
+}
+

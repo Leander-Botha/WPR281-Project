@@ -1,16 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUG TRACKING SYSTEM</title>
+    <script src="./js/AdminL.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/AdminL.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="ander.css">
+</head>
+<!-- p-3 mb-2 bg-transparent text-dark is bootstrap gradient code this is only for main background -->
+<body class="p-3 mb-2 bg-transparent text-dark">
+    <script>
+        function clearScreen(){
+            document.getElementById('dashboard').style.display = 'none'
+            document.getElementById('projects').style.display = 'none'
+            document.getElementById('employees').style.display = 'none'
+            document.getElementById('bugs').style.display = 'none'
+            document.getElementById('admin').style.display = 'none'
+            document.getElementById('info').style.display = 'none'
+            document.getElementById('credit').style.display = 'none'
+            document.getElementById('api').style.display = 'none'
+        }
+        function showContent(value){
+            switch (value) {
+                case 0:
+                    clearScreen()
+                    document.getElementById('dashboard').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Dashboard'
+                    break;
+                case 1:
+                    clearScreen()
+                    document.getElementById('employees').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Employees'
+                    break;
+                case 2:
+                    clearScreen()
+                    document.getElementById('projects').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Projects'
+                    break;
+                case 3:
+                    clearScreen()
+                    document.getElementById('bugs').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Bugs'
+                    break;
+                case 4:
+                    clearScreen()
+                    document.getElementById('admin').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Admin'
+                    break;
+                case 5:
+                    clearScreen()
+                    document.getElementById('info').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Info'
+                    break;
+                case 6:
+                    clearScreen()
+                    document.getElementById('credit').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'Credit'
+                    break;
+                case 7:
+                    clearScreen()
+                    document.getElementById('api').style.display = 'block'
+                    document.getElementById('heading').innerHTML = 'API'
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
     
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
-    </body>
+    <section>
+        
+        <img src="./resources/stars.png" id="stars">
+        <!-- <img src="./resources/1b5bd043e57442318c4d4e4f56b1dd40.png" class="LOGO" id="logo"> -->
+
+    </section>
+
+    <header>
+        <!-- <a href="#" class="logo">Bugger</a> -->
+        <div>
+
+        </div>
+        
+        <div class="d-flex flex-column w-100">
+            <div class="d-flex w-100">
+                <!-- --------------------------side navigation----------------------------- -->
+                <div class="d-flex flex-column w-25">
+                    <div class="card m-2 side-nav">
+                        <div class="p-3">
+                            <img class="w-75" src="./resources/wpr-logo.png" alt="">
+                        </div>
+                        <div onclick="showContent(0)" class="p-3 nav-item d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6H511.8L512.5 447.7C512.5 450.5 512.3 453.1 512 455.8V472C512 494.1 494.1 512 472 512H456C454.9 512 453.8 511.1 452.7 511.9C451.3 511.1 449.9 512 448.5 512H392C369.9 512 352 494.1 352 472V384C352 366.3 337.7 352 320 352H256C238.3 352 224 366.3 224 384V472C224 494.1 206.1 512 184 512H128.1C126.6 512 125.1 511.9 123.6 511.8C122.4 511.9 121.2 512 120 512H104C81.91 512 64 494.1 64 472V360C64 359.1 64.03 358.1 64.09 357.2V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5L575.8 255.5z"/></svg>
+                            <h6>Dashboard</h6>
+                        </div>
+                        <div onclick="showContent(1)" class="p-3 nav-item d-flex" >
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM183.9 216c0-5.449 .9824-10.63 1.609-15.91C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3C0 295.6 7.887 304 17.62 304h199.5C196.7 280.2 183.9 249.7 183.9 216zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM551.9 192h-61.84c-12.8 0-24.88 3.037-35.86 8.24C454.8 205.5 455.8 210.6 455.8 216c0 33.71-12.78 64.21-33.16 88h199.7C632.1 304 640 295.6 640 285.3C640 233.8 600.6 192 551.9 192z"/></svg>
+                            <h6>Employees</h6>
+                        </div>
+                        <div onclick="showContent(2)" class="p-3 nav-item d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 64C0 28.65 28.65 0 64 0H224V128C224 145.7 238.3 160 256 160H384V448C384 483.3 355.3 512 320 512H64C28.65 512 0 483.3 0 448V64zM256 128V0L384 128H256z"/></svg>
+                            <h6>Projects</h6>
+                        </div>
+                        <div onclick="showContent(3)" class="p-3 nav-item d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M352 96V99.56C352 115.3 339.3 128 323.6 128H188.4C172.7 128 159.1 115.3 159.1 99.56V96C159.1 42.98 202.1 0 255.1 0C309 0 352 42.98 352 96zM41.37 105.4C53.87 92.88 74.13 92.88 86.63 105.4L150.6 169.4C151.3 170 151.9 170.7 152.5 171.4C166.8 164.1 182.9 160 199.1 160H312C329.1 160 345.2 164.1 359.5 171.4C360.1 170.7 360.7 170 361.4 169.4L425.4 105.4C437.9 92.88 458.1 92.88 470.6 105.4C483.1 117.9 483.1 138.1 470.6 150.6L406.6 214.6C405.1 215.3 405.3 215.9 404.6 216.5C410.7 228.5 414.6 241.9 415.7 256H480C497.7 256 512 270.3 512 288C512 305.7 497.7 320 480 320H416C416 344.6 410.5 367.8 400.6 388.6C402.7 389.9 404.8 391.5 406.6 393.4L470.6 457.4C483.1 469.9 483.1 490.1 470.6 502.6C458.1 515.1 437.9 515.1 425.4 502.6L362.3 439.6C337.8 461.4 306.5 475.8 272 479.2V240C272 231.2 264.8 224 255.1 224C247.2 224 239.1 231.2 239.1 240V479.2C205.5 475.8 174.2 461.4 149.7 439.6L86.63 502.6C74.13 515.1 53.87 515.1 41.37 502.6C28.88 490.1 28.88 469.9 41.37 457.4L105.4 393.4C107.2 391.5 109.3 389.9 111.4 388.6C101.5 367.8 96 344.6 96 320H32C14.33 320 0 305.7 0 288C0 270.3 14.33 256 32 256H96.3C97.38 241.9 101.3 228.5 107.4 216.5C106.7 215.9 106 215.3 105.4 214.6L41.37 150.6C28.88 138.1 28.88 117.9 41.37 105.4H41.37z"/></svg>
+                            <h6>Bugs</h6>
+                        </div>
+                        <div onclick="showContent(4)" class="p-3 nav-item d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"/></svg>
+                            <h6>Admin</h6>
+                        </div>
+                    </div>
+                    <div class="card m-2 side-nav">
+                        <div onclick="showContent(5)" class="p-3 nav-example d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
+                            <h6>Info</h6>
+                        </div>
+                        <div onclick="showContent(6)" class="p-3 nav-example d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM183.9 216c0-5.449 .9824-10.63 1.609-15.91C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3C0 295.6 7.887 304 17.62 304h199.5C196.7 280.2 183.9 249.7 183.9 216zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM551.9 192h-61.84c-12.8 0-24.88 3.037-35.86 8.24C454.8 205.5 455.8 210.6 455.8 216c0 33.71-12.78 64.21-33.16 88h199.7C632.1 304 640 295.6 640 285.3C640 233.8 600.6 192 551.9 192z"/></svg>
+                            <h6>Credit</h6>
+                        </div>
+                        <div  onclick="showContent(7)" class="p-3 nav-example d-flex">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M437.2 403.5L319.1 215L319.1 64h7.1c13.25 0 23.1-10.75 23.1-24l-.0002-16c0-13.25-10.75-24-23.1-24H120C106.8 0 96.01 10.75 96.01 24l-.0002 16c0 13.25 10.75 24 23.1 24h7.1L128 215l-117.2 188.5C-18.48 450.6 15.27 512 70.89 512h306.2C432.7 512 466.5 450.5 437.2 403.5zM137.1 320l48.15-77.63C189.8 237.3 191.9 230.8 191.9 224l.0651-160h63.99l-.06 160c0 6.875 2.25 13.25 5.875 18.38L309.9 320H137.1z"/></svg>
+                            <h6>API</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- xxxxxxxxxxxxxxx--------side-navigation-------------xxxxxxxxxxxxxxx -->
+        
+                <!-- -----------------------------main-window---------------------------------- -->
+                <div class="card w-75 m-2">
+                    <div class="w-100 text-center border-bottom pt-1">
+                        <h6><strong id="heading">Dashboard</strong></h6>
+                    </div>
+                    <div id="dashboard">
+                        <header>
+                            …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ…ᘛ⁐̤ᕐᐷ
+                        </header>
+                    </div>
+                    <div id="employees">
+                        <button onclick="ShowEmp()">Show All </button>
+                        <button onclick="NewUser()">Add New</button>
+
+                        <div id="empDetails" >
+                            <h1>All Employees</h1>
+                        </div>
+
+                        <div id="addEmp">
+                            <h1>Enter your details</h1>
+                            <fieldset>
+                                <ul>  
+                                  <li>
+                                    <label for="Name">Name:</label>
+                                    <input type="text" id="firstName">
+                                  </li>
+                      
+                                  <li>
+                                    <label for="Surname">Surname:</label>
+                                    <input type="text" id="userSurname">
+                                  </li>
+                                  <li>
+                                    <label for="Surname">Password:</label>
+                                    <input type="text" id="userPass">
+                                  </li>
+                                  
+                                  <li>
+                                    <label for="Email">Email:</label>
+                                    <input type="text" id="userEMail">
+                                  </li>
+
+                                  <li>
+                                    <label for="Username">Username:</label>
+                                    <input type="text" id="username">
+                                  </li>
+                      
+                                </ul>
+                      
+                                <button type="button" id="btnSubmit" onclick="AddUser()">Submit</button>
+                              </fieldset>
+                        </div>
+                         
+                    </div>
+
+
+                    <div id="projects">
+                        <button onClick="ShowProj()">Show all</button>
+                        <button id="addNewTicketBtn" onClick="createProj()">Add New</button>
+                        
+                        
+
+                        <div id="showAll">
+                            <div>
+                                <h1>Showing All the project</h1>
+                            </div>
+
+                        </div>
+                        
+
+                        <div id="newProj" >
+                            <div>
+                                <h1>Add a project</h1>
+                            </div>
+                            <ul>  
+                              <li>
+                                <label for="Name">Project Name:</label>
+                                <input type="text" id="projName">
+                              </li>
+                  
+                              <li>
+                                <label for="Detail">Project Detail:</label>
+                                <input type="text" id="projDetail">
+                              </li>
+                  
+                            </ul>
+                  
+                            <button type="button" onclick="newProj()" id="btnCreateProj">Createproject</button>
+                        </div>
+
+                    </div>
+
+                    <div id="bugs">
+                        <button onClick="ShowAllTickets()">Show all Tickets</button>
+                        <button onClick="createBug()">Add New Tickets</button>
+                        
+
+                        <div id="addNewTicket">
+                            <h1>Create a bug</h1>
+                                <ol>   
+                                    <li>
+                                        <label for="ID">Ticket ID</label>
+                                        <input type="text" name="ID" id="ticketID" value="">
+                                    </li>
+                                    <li>
+                                        <label for="ProjectID">Project ID</label>
+                                        <input type="text" name="ProjectID" id="projectID" value="" >                              
+                                    </li>   
+
+                                    <li>
+                                        <label for="assignedEmployees">Assign Employee to fix bug:</label>
+                                        <select name="AssignedEmployees" id="assignedEmployees" value="">
+                                    </li>
+
+                                    <li>
+                                        <label for="description">Add description:</label>
+                                        <input type="text" name="description" id="ticketdescription" value=""> 
+                                    </li>
+                                    
+                                    <li>
+                                        <label for="priority">Priority</label>
+                                        <select name="priority" id="ticketPriority" placeholder="choose">
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                        </select>
+                                    </li>
+                                     
+                                    <li>
+                                        <label for="CurrentDay">Submit date:</label> 
+                                        <input type="date" name="CurrentDay" id="ticketSubmitDate" value="">  
+                                    </li>
+
+                                    <li>
+                                        <label for="actualdate">Enter Actual date completed:</label> 
+                                        <input type="date" name="actualday" id="actualdate" value="">  
+                                    </li>
+
+                                    <li>
+                                        <label for="bugfounder">Who found the bug:</label>  
+                                        <select name="bugfounder" id="bugFounder" placeholder="choose">
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <label for="resolsum">Add Resolution Summary:</label>
+                                         <textarea id="resolsummary" cols="10" rows="5" placeholder="Add Resolution Summary"></textarea>
+                                    </li>
+                                 
+                                </ol>
+                                
+                                <button name="submit" id="submitTicket" onclick="CreateTicket()" value="">Submit</button>
+                            
+                        </div>
+
+                        <div id="showAllTickets">
+                            <h1>All the tickets</h1>
+                            <div id="div-container"></div>
+
+                            <div id="ticketDetails">
+                                <h1 id="ticketTitle"></h1>
+
+                                <label for="projectname">ProjectName</label>
+                                <p id="projectName"></p>
+
+                                <label for="identifiedBy">Identified By: </label>
+                                <p id="identifiedBy"></p>
+
+                                
+                                <label for="lstassignedEmp">Assigned to: </label>
+                                <select name="" id="lstassignedEmp"></select>
+
+                                <label for="detpriority">Priority level:</label>
+                                <p name="" id="detpriority"></p>
+
+                                <label for="dettype">Status:</label>
+                                <p id="dettype"></p>
+
+                                <label for="ticketDescription">Description:</label>
+                                <p id="ticketDescription"></p>
+
+                                <label for="ticketDescription">Identified On:</label>
+                                <p id="dateIdenfiied"></p>
+
+                                <label for="ticketDescription">Target Resolution Date:</label>
+                                <p id="trgtResolutionDate"></p>
+
+                                <label for="actResolutionDate">Resolved on:</label>
+                                <p id="actResolutionDate"></p>
+
+                                <label for="resolSummary">Resolution summary:</label>
+                                <p id="resolSummary"></p>
+
+                                <button id="closeTicketDetailsbtn" onclick="CloseTicketDetails()">Close</button>
+
+                            </div>
+
+
+                        </div>
+                        
+
+                    </div>
+
+                    <div id="admin">
+                        admin login
+                    </div>
+                    <div id="info">
+                        
+                    </div>
+                    <div id="credit">
+                        yeet credit
+                    </div>
+                    <div id="api">
+                        some apiiii
+                    </div>
+                </div>
+                <!-- xxxxxxxxxxxxxxxxxxxx------------main-window---------------xxxxxxxxxxxxxxxxxx -->
+            </div>
+            <!-- --------------------------------------footer-------------------------------------- -->
+        <!-- <footer class="w-100 d-flex bg-dark text-light p-5 footer">
+            <div class="w-50 pl-5">
+                <ul class="list-group footer-list pl-5 text-center">
+                    <li class="m-1">Dewald Willem Dirks</li>
+                    <li class="m-1">Keenan Lombard</li>
+                    <li class="m-1">Leander Botha</li>
+                    <li class="m-1">Juanro Minne</li>
+                    <li class="m-1">Johan Lindeque</li>
+                </ul>
+            </div>
+            <div class="w-50 d-flex flex-column">
+                <img style="width: 20rem;" src="resources\logo.png" alt="">
+                <h5 class="mt-4" style="color: black">Copyright reserved</h5>
+            </div>
+        </footer> -->
+        <!-- xxxxxxxxxxxxxxxxxxx--------------footer--------------xxxxxxxxxxxxxxxxxxxxxxx -->
+        <!-- <DIV class="dISPLAYER">
+            <div class="User-Bug">
+                <h3>User</h3>
+                <label>Ok</label>
+            </div>
+        </DIV> -->
+    </header>
+
+    <!-- This is for the popup menu -->
+    <!-- <header>
+        <a href="#" class="open-button" id="AdminL" onclick="openForm()">Admin Login</a>
+    </header> -->
+
+
+    <div class="Login-box" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h2>Admin Login</h2>
+            <div class="User-box">
+                <input type="text" name="" required="" >
+                <label>Username</label>
+            </div>
+            <div  class="User-box">
+                <input type="password" name="" required="" >
+                <label>password</label>
+            </div>
+            <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <button class="TransP" type="submit" onclick="closeForm()">Log on</button>
+            </a>
+
+            
+        </form>
+    </div>
+
+    
+    
+    <script>
+        let stars = document.getElementById('stars');
+        // let smountains_behind = document.getElementById('mountains_behind');
+
+        window.addEventListener("scroll", function() {
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px';
+            // mountains_behind.style.top = value * 0.5 + 'px';
+        })
+    </script>
+
+    <!-- <script src="login.js"></script> -->
+    <script src="emp.js"></script>
+    <script src="projects.js"></script>
+    <script src="ticket.js"></script>
+    <!-- popup menu code stops here  -->
+
+    <!-- this is demo code for the bug report menu -->
+   
+    <!-- Bug report menu ends here  -->
+</body>
+<!-- Main backgroun body ends here -->
 </html>

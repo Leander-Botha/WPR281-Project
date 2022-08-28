@@ -1,0 +1,90 @@
+/* @import url('https://fonts.googleapis.com/css?family=poppins:300,400,500,600,700,800,900&display=swap');   */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    border: black;
+}
+.GroupBox-panel {
+    background-color: #fff;
+    padding-left: 10px;
+    display: flex;
+    height: 80vh;
+    width: 15vw;
+
+}
+#dashboard,
+#projects,
+#employees,
+#bugs,
+#admin,
+#info,
+#credit,
+#api{
+    display: none;
+}
+.User-Bug {
+    background: linear-gradient(#fff, gray);
+    display: grid;
+    padding: 10px;
+    width: 15vw;
+    height: 25vh;
+}
+
+
+    
+body {
+    background-image: linear-gradient(#393f4a, #30455e);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+}
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 500;
+
+}

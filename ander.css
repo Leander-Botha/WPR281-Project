@@ -1,0 +1,71 @@
+.div-proj{
+    color: red;
+    width: 300px;
+    height: 180px;
+    background-color: lightblue;
+    border: 1px solid;
+}
+
+.divEMP{
+    color: green;
+    width: 500px;
+    height: 200px;
+    background-color: lightgray;
+    border: 1px solid;
+}
+
+input{
+    border: 1px solid;
+}
+.child-div:hover 
+{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.child-div 
+ {
+    max-width: fit-content;
+    max-height: fit-content;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 5em 5em 0;
+    padding: 1em;
+    transition: all 100ms ease-in-out;
+    box-shadow:  10px 10px 8px #888888;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+#div-container 
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2em 0em;
+
+}
+#ticketDetails
+{
+    display: none;
+    align-items: center;
+    background-color: gray;
+    border: 1px solid black;
+    width: 40em;
+    height: 50em;
+    border-radius: 10px;
+    position: absolute;
+    top: -20px;
+    left: 400px;
+
+
+}
+.tktMoreDetailsBtn
+
+{
+
+}
+#showAllTickets
+{   
+    position: relative;
+}
