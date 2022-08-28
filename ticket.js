@@ -3,8 +3,11 @@ function populateFormValues()
 {
     const bugFounderList = document.getElementById("bugFounder");
     const employeeList = document.getElementById("assignedEmployees");
-    
-    let theUsers = JSON.parse(localStorage.getItem('theUsers'))
+    const projectList = document.getElementById("projectList");
+
+    let theUsers = JSON.parse(localStorage.getItem('theUsers'));
+    let theProjects = JSON.parse(localStorage.getItem('theProjects'));
+
     for(const newUser of theUsers)
     {   
         let option = document.createElement("option");    
@@ -20,6 +23,14 @@ function populateFormValues()
         option.innerHTML = newUser.Name;
         employeeList.appendChild(option);
     }
+
+    for(const project of theProjects)
+    {
+        let option = document.createElement("option");    
+        option.value = project.name;
+        option.innerHTML = project.name;
+        projectList.appendChild(option);
+    }
     
 }
 
@@ -34,28 +45,34 @@ function createBug(){
 
 
 
-function submitTicket(e) {
+function submitTicket() {
     // let CurrentDay = new Date();
      let ticketID = document.getElementById("ticketID").value;
-     let projectID = document.getElementById("projectID").value;
+     let name = document.getElementById("ticketName").value;
+     let projectName = document.getElementById("projectList").value;
      let AssignedEmp = document.getElementById("assignedEmployees").value;
      let ticketdescription = document.getElementById("ticketdescription").value;
      let ticketPriority = document.getElementById("ticketPriority").value;
-     let ticketSubmitDate = document.getElementById("ticketSubmitDate").value;
+     let ticketSubmitDate =  new Date().toDateString;
      let bugFounder = document.getElementById("bugFounder").value;
-     let actdate = document.getElementById("actualdate").value;
-     let resolsum = document.getElementById("resolsummary").value;
+     //let actdate = document.getElementById("actualdate").value;
+     //let resolsum = document.getElementById("resolsummary").value;
+     let ticketSum = document.getElementById("ticketSum").value;
+     let status;
      
      let ticket = {
        id: ticketID,
-       projectID: projectID,
+       name: name,
+       projectName: projectName,
        description: ticketdescription,
        assignedTo: AssignedEmp,
        priority: ticketPriority,
-       SubDate: ticketSubmitDate,
+       SubDate: new Date().toDateString(),
        Founder: bugFounder,
-       actualdate: actdate,
-       resolveSummary : resolsum
+       actualdate: "",
+       resolveSummary : "",
+       ticketSum: ticketSum,
+       status: "Open"
      }
       
      if (localStorage.getItem('Tickets') == null) {
@@ -68,11 +85,12 @@ function submitTicket(e) {
        ticketArray.push(ticket);
        localStorage.setItem('Tickets', JSON.stringify(ticketArray));
      }
-     e.preventDefault();
-     document.getElementById("form").reset();
+     document.getElementById("ticketSubmitForm").reset();
  }
  document.getElementById("submitTicket").addEventListener("click",submitTicket);
  
+
+
 
 
 // Display ticket on click
@@ -156,6 +174,63 @@ function ShowAllTickets(){
     document.getElementById("addNewTicket").style.display="none"; 
     document.getElementById("showAllTickets").style.display="block";
 
+    const DivContainer = document.getElementById("div-container");
+
+    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    
+    console.log(ticketArray);
+
+    for(let i = 0; i < ticketArray.length; i++)
+    {
+
+        const newTkt = document.createElement("div");
+        const newTktName = document.createElement("h1");
+        const newTktProjName = document.createElement("h2");
+        const newTktSumm = document.createElement("p");
+        const newTktPrio = document.createElement("p");
+        const newtTktAssign = document.createElement("p");
+        const newTktType = document.createElement("p");
+        const newTktSubDate = document.createElement("p");
+
+        const newTktMoreDetailsBtn = document.createElement("button");
+
+        newTkt.classList.add("child-div");
+        newTktName.classList.add("tktName");
+        newTktSumm.classList.add("tktSummary");
+        newTktPrio.classList.add("tktPriority");
+        newTktType.classList.add("tktType");
+        newtTktAssign.classList.add("tktAssign")
+        newTktSubDate.classList.add("tktSubDate");
+
+        newTkt.appendChild(newTktName);
+        newTkt.appendChild(newTktProjName);
+        newTkt.appendChild(newTktSumm);
+        newTkt.appendChild(newTktPrio);
+        newTkt.appendChild(newtTktAssign);
+        newTkt.appendChild(newTktType);
+        newTkt.appendChild(newTktSubDate);
+        newTkt.appendChild(newTktMoreDetailsBtn);
+
+        newTktName.innerHTML = ticketArray[i].name;
+        newTktProjName.innerHTML = ticketArray[i].projectName;
+        newTktSumm.innerHTML = ticketArray[i].ticketSum;
+        newTktPrio.innerHTML = ticketArray[i].priority;
+        newtTktAssign.innerHTML = ticketArray[i].assignedTo;
+        newTktType.innerHTML = ticketArray[i].status;
+        newTktSubDate.innerHTML = ticketArray[i].SubDate;
+
+
+        
+        newTktMoreDetailsBtn.id = "tktMoreDetailsBtn";
+        // Add open and close and delete buttons.
+        newTktMoreDetailsBtn.innerHTML = "View more details";
+        DivContainer.appendChild(newTkt);
+
+
+    }
+    console.log("HELLO")
+
+    
 }
 
 function DisplayTicketDetails()

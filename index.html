@@ -225,30 +225,33 @@
                     </div>
 
                     <div id="bugs">
-                        <button onClick="ShowAllTickets()">Show all Tickets</button>
-                        <button onClick="createBug()">Add New Tickets</button>
+                        <button id="showAllTickets" onClick="ShowAllTickets()">Show all Tickets</button>
+                        <button id="CreateBug" onClick="createBug()">Add New Tickets</button>
                         
-                        <form id="form">
+                        <form id="ticketSubmitForm">
                         <div id="addNewTicket">
                             <h1>Create a bug</h1>
                                 <ol>   
                                     <li>
-                                        <label for="ID">Ticket ID</label>
+                                        <label for="ticketID">Ticket ID</label>
                                         <input type="text" name="ID" id="ticketID" value="">
                                     </li>
                                     <li>
-                                        <label for="ProjectID">Project ID</label>
-                                        <input type="text" name="ProjectID" id="projectID" value="" >                              
+                                        <label for="ticketName">Ticket Name</label>
+                                        <input type="text" name="tktName" id="ticketName" value="">
+                                    </li>
+                                    <li>
+                                        <label for="projectList">Add to Project</label>
+                                        <select name="ProjectList" id="projectList" value=""></select>                         
                                     </li>   
 
                                     <li>
                                         <label for="assignedEmployees">Assign Employee to fix bug:</label>
-                                        <select name="AssignedEmployees" id="assignedEmployees" value="">
+                                        <select name="AssignedEmployees" id="assignedEmployees" value=""></select>
                                     </li>
-
                                     <li>
-                                        <label for="description">Add description:</label>
-                                        <input type="text" name="description" id="ticketdescription" value=""> 
+                                        <label for="ticketSum">Add ticket Summary:</label>
+                                         <textarea id="ticketSum" maxlength="20" cols="10" rows="2" placeholder="Add ticket Summary"></textarea>
                                     </li>
                                     
                                     <li>
@@ -258,26 +261,17 @@
                                             <option value="Medium">Medium</option>
                                             <option value="High">High</option>
                                         </select>
-                                    </li>
-                                     
-                                    <li>
-                                        <label for="CurrentDay">Submit date:</label> 
-                                        <input type="date" name="CurrentDay" id="ticketSubmitDate" value="">  
-                                    </li>
-
-                                    <li>
-                                        <label for="actualdate">Enter Actual date completed:</label> 
-                                        <input type="date" name="actualday" id="actualdate" value="">  
-                                    </li>
+                                    </li>                                
 
                                     <li>
                                         <label for="bugfounder">Who found the bug:</label>  
                                         <select name="bugfounder" id="bugFounder" placeholder="choose">
                                         </select>
                                     </li>
+                                                                      
                                     <li>
-                                        <label for="resolsum">Add Resolution Summary:</label>
-                                         <textarea id="resolsummary" cols="10" rows="5" placeholder="Add Resolution Summary"></textarea>
+                                        <label for="ticketdescription">Add description:</label>
+                                        <textarea id="ticketdescription" maxlength="255" cols="10" rows="2" placeholder="Add ticket Description"></textarea>
                                     </li>
                                  
                                 </ol>
