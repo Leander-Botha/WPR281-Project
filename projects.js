@@ -44,7 +44,7 @@ function ShowAllProj(Name,desc) {
     const divProj = document.getElementById("showAll");
     const newDiv = document.createElement("div");
     console.log("add");
-    newDiv.classList.add("div-proj");
+    newDiv.classList.add("child-div");
     divProj.appendChild(newDiv);
     newDiv.innerHTML = "<h1 >"+"Name: "+ Name+"</h1>"+"<br>"
         +"<p >"+"Summary: "+ desc +"</p>";

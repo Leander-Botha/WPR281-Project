@@ -49,7 +49,7 @@ function ShowEmp() {
 	function AddNew(n) {
         const DivContainer = document.getElementById("empDetails");
 	    const newDiv = document.createElement("div");
-	    newDiv.classList.add("divEMP");
+	    newDiv.classList.add("child-div");
 	    DivContainer.appendChild(newDiv);
 	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"
 	                     +"Name: "+ theUsers[n].Name +"<br>"
