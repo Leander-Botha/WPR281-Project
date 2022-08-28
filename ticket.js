@@ -33,87 +33,46 @@ function createBug(){
 }
 
 
-let ticket1 = 
-{
-id: 1,
-projectID: 2,
-name: "Syntax error line 5",
-summ: "Syntax seems to be giving an error",
-priority: "Low",
-assignedTo: "John" ,
-type: "Unresolved",
-date: new Date().toDateString(),
-targdate: "Thu 25 Septermber 2022",
-actdate: "Thu 30 Septermber 2022",
-desc: "There seems to be an error in this and that",
-resolsum:"Just added a semi-colon"
-}
-let ticket2 = 
-{
-id: 2,
-projectID: 2,
-name: "s",
-summ: "Jy is ssss",
-priority: "Low",
-assignedTo: "Jou ma",
-type: "Unresolved",
-date: new Date().toDateString(),
-actdate: "Thu 25 Septermber 2022",
-desc: "There seems to be an error in this and that",
-resolsum:""
-}
 
-let ticket3 = 
-{
-id: 3,
-projectID: 2,
-name: "Ticker 3",
-summ: "Jy is nie",
-priority: "High",
-assignedTo: "John Cena",
-type: "Peter",
-date: new Date().toDateString(),
-actdate: "Thu 25 Septermber 2022",
-desc: "There seems to be an error in this and that",
-resolsum:""
-}
-let ticketArray = [];
-let click = 1;
-
-
-ticketArray.push(ticket1,ticket2,ticket3);
-
-console.log(ticketArray);
-
-function CreateTicket(ticketArray)
-{
-    let CurrentDay = new Date();
-    let ticketID = document.getElementById("ticketID").value;
-    let projectID = document.getElementById("projectID").value;
-    let AssignedEmp = document.getElementById("assignedEmployees").value;
-	let ticketdescription = document.getElementById("ticketdescription").value;
-    let ticketPriority = document.getElementById("ticketPriority").value;
-    let ticketSubmitDate = document.getElementById("ticketSubmitDate").value;
-    let bugFounder = document.getElementById("bugFounder").value;
-    let actdate = document.getElementById("actualdate").value;
-    let resolsum = document.getElementById("resolsummary").value;
-    //ticket constructor
-    function Ticket(ticketID, projectID, AssignedEmp, ticketdescription,ticketPriority,ticketSubmitDate,bugFounder) {
-        this.Id = ticketID;
-        this.projectID = projectID ;
-        this.foundby = bugFounder;
-        this.Assigned = AssignedEmp;
-        this.Description = ticketdescription;
-        this.Priority = ticketPriority;
-        this.SumbmissionDate = ticketSubmitDate;
-        this.actdate = actdate;
-        this.resolsum = resolsum;
-      }
-      let NewTicket = new Ticket(ticketID, projectID, AssignedEmp, ticketdescription, ticketPriority,ticketSubmitDate, bugFounder,actdate, resolsum);
-        ticketArray.push(NewTicket);
-  
-        
-}
+function submitTicket(e) {
+    // let CurrentDay = new Date();
+     let ticketID = document.getElementById("ticketID").value;
+     let projectID = document.getElementById("projectID").value;
+     let AssignedEmp = document.getElementById("assignedEmployees").value;
+     let ticketdescription = document.getElementById("ticketdescription").value;
+     let ticketPriority = document.getElementById("ticketPriority").value;
+     let ticketSubmitDate = document.getElementById("ticketSubmitDate").value;
+     let bugFounder = document.getElementById("bugFounder").value;
+     let actdate = document.getElementById("actualdate").value;
+     let resolsum = document.getElementById("resolsummary").value;
+     
+     let ticket = {
+       id: ticketID,
+       projectID: projectID,
+       description: ticketdescription,
+       assignedTo: AssignedEmp,
+       priority: ticketPriority,
+       SubDate: ticketSubmitDate,
+       Founder: bugFounder,
+       actualdate: actdate,
+       resolveSummary : resolsum
+     }
+      
+     if (localStorage.getItem('Tickets') == null) {
+         let ticketArray = [];
+         ticketArray.push(ticket);
+         localStorage.setItem('Tickets', JSON.stringify(ticketArray));    
+     }
+     else {
+       let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+       ticketArray.push(ticket);
+       localStorage.setItem('Tickets', JSON.stringify(ticketArray));
+     }
+     e.preventDefault();
+     document.getElementById("form").reset();
+ }
+ document.getElementById("submitTicket").addEventListener("click",submitTicket);
+ 
 
 
 // Display ticket on click
