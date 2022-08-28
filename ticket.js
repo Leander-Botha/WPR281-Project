@@ -36,10 +36,10 @@ function populateFormValues()
 
 
 // create a ticket
-function createBug(){
-    //document.getElementById("showAllTickets").style.display="none"; 
-    //document.getElementById("addNewTicket").style.display="block";
-    DisplayTicket(ticketArray);
+function ShowAddNewTickets(){
+    //document.getElementById("div-container").style.display="none"; 
+   //document.getElementById("addNewTicket").style.display="block";
+   //fetchTickets();
     
 }
 
@@ -91,10 +91,39 @@ function submitTicket() {
  
 
 
+ function fetchTickets() {
+    let tickets = JSON.parse(localStorage.getItem('Tickets'));
+    
+    let ticketList = document.getElementById('div-container');
+    
+    ticketList.innerHTML ='';
+    
+    for (let i = 0; i < tickets.length; i++) {
+      let id = tickets[i].id;
+      let name = tickets[i].name;
+      let desc = tickets[i].description;
+      let priority = tickets[i].priority;
+      let assignedTo = tickets[i].assignedTo;
+      let status = tickets[i].status;
+      let subDate = tickets[i].subDate;
+      
+      ticketList.innerHTML += '<div class = "well">' +
+                          '<h6>Issue name: ' + name + '</h6>' + 
+                          '<p><span class = "label label-info">' + status + '</span></p>' +
+                          '<h3>' + desc + '</h3>' +
+                          '<p><span></span> ' + priority + '</p>' +
+                          '<p><span></span> ' + assignedTo + '</p>' + 
+                          '<p><span></span> ' + subDate + '</p>' + 
+                          '<a href = "#" onclick = "CloseTicket(\''+id+'\')" class = "btn btn-warning">Close</a> ' +
+                          '<a href = "#" onclick = "deleteTicket(\''+id+'\')" class = "btn btn-danger">Delete</a>' +
+                           '</div>';
+    }
+   // document.getElementById("div-container").style.display="block-inline"; 
+  }
 
 
 // Display ticket on click
-function DisplayTicket(ticketArray)
+/*function DisplayTicket(ticketArray)
 {
     const DivContainer = document.getElementById("div-container");
     const newTkt = document.createElement("div");
@@ -160,15 +189,15 @@ function DisplayTicket(ticketArray)
         }*/
 
 
-     }
+     /*}
 
      newTktMoreDetailsBtn.addEventListener("click", DisplayTicketDetails)
 
      console.log("Printed from display function: ");
      console.log(ticketArray);
-}
+}*/
 // Show all tickets
-function ShowAllTickets(){
+/*function ShowAllTickets(){
 
     populateFormValues()
     document.getElementById("addNewTicket").style.display="none"; 
@@ -231,7 +260,7 @@ function ShowAllTickets(){
     console.log("HELLO")
 
     
-}
+}*/
 
 function DisplayTicketDetails()
 {
@@ -299,20 +328,28 @@ function DisplayTicketDetails()
 } 
 
 
-function deleteTicket()
+function deleteTicket(id)
 {
-
+    let Tickets =JSON.parse(localStorage.getItem('Tickets'));
+    for (let i = 0; i < Tickets.length; i++) 
+    {
+        if (Tickets[i].id == id)
+        {
+            Tickets.splice(i, 1);          
+        }
+    }
 }
 
-function editTicket()
+function CloseTicket(id)
 {
-   /* for(let i = 0; i < ticketArray.length; i++)
-    {   
-       if(input== ticketArray[i].name)
-       {
-
-       }
-    }*/
+    let Tickets =JSON.parse(localStorage.getItem('Tickets'));
+    for (let i = 0; i < Tickets.length; i++) 
+    {
+        if (Tickets[i].id == id)
+        {
+            Tickets.status ="status";
+        }
+    }
 }
 
 

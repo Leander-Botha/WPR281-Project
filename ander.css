@@ -6,6 +6,9 @@
     border: 1px solid;
 }
 
+
+
+
 .divEMP{
     color: green;
     width: 500px;
@@ -43,6 +46,7 @@ input{
     flex-wrap: wrap;
     width: 100%;
     margin: 2em 0em;
+    padding: 0.5em;
 
 }
 #ticketDetails
