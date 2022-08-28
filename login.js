@@ -8,16 +8,13 @@ let Admin =
     
 
    
-let validLogin = false;
+
 function checkUserLogin() {
-
-
 	let username = document.getElementById("username").value;
-	    let password = document.getElementById("userPass").value;
+	let password = document.getElementById("userPass").value;
 	    if(username == Admin.username && password == Admin.password)
 	    {
 	        console.log("User login successful" + '…ᘛ⁐̤ᕐᐷ');
-	        validateLogin = true;
 	        closeForm()
 	    }
 	    else if (username == Admin.username && password != Admin.password)
@@ -37,7 +34,7 @@ function checkUserLogin() {
             alert("User login failed  incorrect username & password");
 	        
         }
-        
+            
 
 }
 
