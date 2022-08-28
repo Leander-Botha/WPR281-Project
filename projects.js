@@ -24,6 +24,7 @@ function newProj() {
 
     resetForm();
     ShowProj();
+    
 }  
 
 let clickCountProj = 0;

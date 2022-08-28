@@ -30,6 +30,7 @@ function AddUser() {
 
     resetAddUser();
     ShowEmp();
+    
 }
 
 let clickCountEMP = 0;
