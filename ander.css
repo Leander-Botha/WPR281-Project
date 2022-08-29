@@ -1,0 +1,86 @@
+li{
+    list-style: none;
+    
+    margin-top: 10px;
+    display: block;
+    font-size: 20px;
+    overflow: hidden;
+    padding: 10px  20px 5px;
+}
+
+input{
+    border: 1px solid;
+}
+.child-div:hover 
+{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.btn-primary {
+    color: #fff;
+    background-color:crimson;
+    border-color: crimson;
+}
+.btn-primary2 {
+    color: #fff;
+    background-color:lightgreen;
+    border-color: green;
+}
+.child-div 
+ {
+    max-width: fit-content;
+    max-height: fit-content;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 5em 5em 0;
+    padding: 1em;
+    transition: all 100ms ease-in-out;
+    box-shadow:  10px 10px 8px #888888;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    display: inline-block;
+
+}
+#div-container 
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2em 0em;
+    padding: 0.5em;
+
+}
+#ticketDetails
+{
+    display: none;
+    align-items: center;
+    background-color: gray;
+    border: 1px solid black;
+    width: 40em;
+    height: 50em;
+    border-radius: 10px;
+    position: absolute;
+    top: -20px;
+    left: 400px;
+
+
+}
+.tktMoreDetailsBtn
+
+{
+
+}
+#showAllTickets
+{   
+    position: relative;
+}
+#openTicketbtn
+{
+    disabled: true;
+}
+
+
+#editTicketForm{
+    display: none;
+}
