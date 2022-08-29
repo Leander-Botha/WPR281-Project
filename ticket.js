@@ -50,6 +50,8 @@ function filterByProjects() {
     document.getElementById("addNewTicket").style.display="none";
     document.getElementById("showAllTickets").style.display="none"; 
     document.getElementById("filterdTickets").style.display="block"; 
+    document.getElementById("editTicketForm").style.display="none"; 
+    
 
     let ticketList = document.getElementById('filterdTickets');
     for (let m = 0; m < ticketArray.length ; m++) {
@@ -84,12 +86,8 @@ function filterByProjects() {
                                 '<button id ="openTicketbtn" onclick = "OpenTicket(\''+id+'\')" class = "btn btn-success">Re-Open'+"</button>" + "     " + 
 
                                 '</div>';
-
-        }
-        
-    }
-
-    
+        }   
+    }    
 }
 
 
@@ -148,6 +146,7 @@ function ShowAddNewTickets() {
     document.getElementById("addNewTicket").style.display="block";
     document.getElementById("showAllTickets").style.display="none"; 
     document.getElementById("filterdTickets").style.display="none"; 
+    document.getElementById("editTicketForm").style.display="none"; 
 }
 
 
@@ -167,6 +166,7 @@ function ShowAllTickets() {
     document.getElementById("addNewTicket").style.display="none";
     document.getElementById("showAllTickets").style.display="block"; 
     document.getElementById("filterdTickets").style.display="none";
+    document.getElementById("editTicketForm").style.display="none"; 
 
    
     let tickets = JSON.parse(localStorage.getItem('Tickets'));
@@ -225,22 +225,6 @@ function DeleteTicket(ticketID)
     window.location.reload(true);
     console.log("Deleted: " + ticketID)
 }
-// filter on click
-/*document.getElementById("projectListFilter").onchange = function()
-{
-    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
-    for(let i=0; i<ticketArray.length; i++) 
-    {
-        if(ticketArray[i].projectName==this.value)
-        {
-            console.log("yes");//hy log actually yes so
-                                // hy kan sien hoeveel tickets daai project het maar ek weni hoe ek sal kan display nie
-        }
-    }
-    
-};*/
-
-// Display ticket on click
 
 // Show all tickets
 /*function ShowAllTickets(){
@@ -418,6 +402,11 @@ function editTicket()
 {
 //contentEditable="true"   //maak dat jy op die input kan click en weer begin type maar ja 
 //editing kon ek nog nie uitfigure nie maar dis iets 
+    document.getElementById("addNewTicket").style.display="none";
+    document.getElementById("showAllTickets").style.display="block"; 
+    document.getElementById("filterdTickets").style.display="none";
+    document.getElementById("editTicketForm").style.display="none"; 
+
 }
 
 

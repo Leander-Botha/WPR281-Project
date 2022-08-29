@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./css/AdminL.css">
     <link rel="stylesheet" href="css\style.css">
     <link rel="stylesheet" href="ander.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <!-- p-3 mb-2 bg-transparent text-dark is bootstrap gradient code this is only for main background -->
 <body class="p-3 mb-2 bg-transparent text-dark">
@@ -24,6 +26,8 @@
             document.getElementById('info').style.display = 'none'
             document.getElementById('credit').style.display = 'none'
             document.getElementById('api').style.display = 'none'
+            document.getElementById("addNewTicket").style.display="none";
+            document.getElementById("editTicketForm").style.display="none"; 
         }
         function showContent(value){
             switch (value) {
@@ -147,6 +151,7 @@
                             …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ…ᘛ⁐̤ᕐᐷ
                         </header>
                     </div>
+
                     <div id="employees">
                         <button onclick="ShowEmp()">Show All </button>
                         <button onclick="NewUser()">Add New</button>
@@ -163,24 +168,19 @@
                                     <label for="Name">Name:</label>
                                     <input type="text" id="firstName">
                                   </li>
-                      
                                   <li>
                                     <label for="Surname">Surname:</label>
                                     <input type="text" id="userSurname">
                                   </li>
-
                                   <li>
                                     <label for="Email">Email:</label>
                                     <input type="text" id="userEMail">
                                   </li>
-
                                   <li>
                                     <label for="Username">Username:</label>
                                     <input type="text" id="username">
                                   </li>
-                      
                                 </ul>
-                      
                                 <button type="button" id="btnSubmit" onclick="AddUser()">Submit</button>
                               </fieldset>
                         </div>
@@ -192,15 +192,12 @@
                         <button onClick="ShowProj()">Show all</button>
                         <button id="addNewTicketBtn" onClick="createProj()">Add New</button>
                         
-                        
-
                         <div id="showAll">
                             <div>
                                 <h1>Showing All the project</h1>
                             </div>
 
-                        </div>
-                        
+                        </div> 
 
                         <div id="newProj" >
                             <div>
@@ -211,14 +208,11 @@
                                 <label for="Name">Project Name:</label>
                                 <input type="text" id="projName">
                               </li>
-                  
                               <li>
                                 <label for="Detail">Project Detail:</label>
                                 <input type="text" id="projDetail">
                               </li>
-                  
                             </ul>
-                  
                             <button type="button" onclick="newProj()" id="btnCreateProj">Createproject</button>
                         </div>
 
@@ -227,14 +221,10 @@
                     <div id="bugs">
                         <button id="showAllTicketsBTN" onclick="ShowAllTickets()" >Show all Tickets</button>
                         <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
-
-                        
-                                        <select name="Projectfilter" id="projectListFilter" onchange="filterByProjects()">
-                                            <option value="none" selected disabled hidden>Filter by Project</option>
-                                        </select> 
+                        <select name="Projectfilter" id="projectListFilter" onchange="filterByProjects()">
+                            <option value="none" selected disabled hidden>Filter by Project</option>
+                        </select> 
                        
-                        
-
                         <div id="filterdTickets">
                             <h1>Fillterd by project</h1>
                         </div>
@@ -305,8 +295,79 @@
 
                            
                             </div>
+                        </div>
 
-
+                        <div id="editTicketForm" display="none">
+                            <section class="position-relative py-4 py-xl-5">
+                                <div class="container position-relative">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                                            <div class="card mb-5">
+                                                <div class="card-body p-sm-5">
+                                                    <h2 class="text-center mb-4">Edit Ticket</h2>
+                                                    <label class="form-label" >
+                                                        <span style="color: rgb(52, 58, 64);">Ticket ID</span>
+                                                    </label>
+                                                    <form method="post">
+                                                        <div class="mb-3">
+                                                            <input class="form-control" type="text"  id="ticketID" name="name" placeholder="Ticket ID">
+                                                        </div>
+                                                            <label class="form-label">
+                                                                <span style="color: rgb(52, 58, 64);">Ticket Name</span>
+                                                            </label>
+                                                            <input class="form-control" type="text" id="ticketName" name="name" placeholder="Ticket Name">
+                                                            <label class="form-label">
+                                                                <span style="color: rgb(52, 58, 64);">Project Name</span>
+                                                        </label>
+                                                        <select class="form-select" name="ProjectList" id="projectList">
+                                                            <option value="none" selected disabled hidden>Select a Project</option>
+                                                        </select>
+                                                        <div class="mb-3"></div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">
+                                                                <span style="color: rgb(52, 58, 64);">Assign Employee</span>
+                                                                
+                                                            </label>
+                                                        <select class="form-select" name="AssignedEmployees" id="assignedEmployees">
+                                                            <option value="none" selected disabled hidden>Select a Project</option>
+                                                        </select>
+                                                        <label class="form-label">
+                                                            <span style="color: rgb(52, 58, 64);">Ticket Summary</span>
+                                                        </label>
+                                                        <input class="form-control" type="text" id="ticketSum" name="name" placeholder="Ticket Summary">
+                                                        <label class="form-label">
+                                                            <span style="color: rgb(52, 58, 64);">Priority</span>
+                                                        </label>
+                                                            <select class="form-select" name="priority" id="ticketPriority">
+                                                                <option value="Low">Low</option>
+                                                                <option value="Medium">Medium</option>
+                                                                <option value="High">High</option>
+                                                            </select>
+                                                        <label class="form-label"><span style="color: rgb(52, 58, 64);">Who found the bug:</span>
+                                                        </label>
+                                                        <select class="form-select" name="bugfounder" id="bugFounder" >
+                                                            <option value="none" selected disabled hidden>select option</option>
+                                                        </select>
+                                                        <label class="form-label">
+                                                            <span style="color: rgb(52, 58, 64);">Resolve by date:</span>
+                                                        </label>
+                                                        <input class="form-control" type="date" id="targdate">
+                                                        <label class="form-label">
+                                                            <span style="color: rgb(52, 58, 64);">Description</span>
+                                                        </label>
+                                                        <textarea class="form-control" id="ticketdescription" name="descriptionTicket" rows="6" placeholder="Message"></textarea>
+                                                    </div>
+                                                        <div>
+                                                            <button class="btn btn-primary d-block w-100" type="submit" onclick="editTicket()">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
                         </div>
                         
 
@@ -377,7 +438,7 @@
         </form>
     </div>
 
-    
+
     
     <script>
         let stars = document.getElementById('stars');
