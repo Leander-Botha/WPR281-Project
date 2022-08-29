@@ -49,6 +49,7 @@
                     document.getElementById('bugs').style.display = 'block'
                     document.getElementById('heading').innerHTML = 'Bugs'
                     populateFormValues()
+                    ShowAllTickets()
                     break;
                 case 4:
                     clearScreen()
@@ -224,7 +225,7 @@
                     </div>
 
                     <div id="bugs">
-                        <button id="showAllTickets" onclick="ShowAllTickets()" >Show all Tickets</button>
+                        <button id="showAllTicketsBTN" onclick="ShowAllTickets()" >Show all Tickets</button>
                         <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
 
                         
@@ -232,7 +233,11 @@
                                             <option value="none" selected disabled hidden>Filter by Project</option>
                                         </select> 
                        
+                        
 
+                        <div id="filterdTickets">
+                            <h1>Fillterd by project</h1>
+                        </div>
                         <form id="ticketSubmitForm">
                         <div id="addNewTicket">
                             <h1>Create a bug</h1>
