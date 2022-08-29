@@ -57,9 +57,10 @@ input{
 
 
 }
-.details-div
+.tktMoreDetailsBtn
+
 {
-    display: none;
+
 }
 #showAllTickets
 {   
@@ -69,3 +70,5 @@ input{
 {
     disabled: true;
 }
+
+
