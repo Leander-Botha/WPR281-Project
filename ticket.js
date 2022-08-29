@@ -92,9 +92,9 @@ function filterByProjects() {
 
 
 
-// create a ticket
+// Create a ticket
 function submitTicket() {
-    // let CurrentDay = new Date();
+
      let ticketID = document.getElementById("ticketID").value;
      let name = document.getElementById("ticketName").value;
      let projectName = document.getElementById("projectList").value;
@@ -132,7 +132,7 @@ function submitTicket() {
      }
      else {
        let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
-       ticketArray.push(ticket);
+       ticketArray.unshift(ticket);
        localStorage.setItem('Tickets', JSON.stringify(ticketArray));
      }
      document.getElementById("ticketSubmitForm").reset();
@@ -185,8 +185,12 @@ function ShowAllTickets() {
       let assignedTo = tickets[i].assignedTo;
       let status = tickets[i].status;
       let subDate = tickets[i].SubDate;
+      let targdate = tickets[i].targdate;
       let actualdate = tickets[i].actualdate;
       let founder = tickets[i].bugFounderList;
+      let resolvesumm = tickets[i].resolveSummary;
+      let description = tickets[i].description;
+      
       
       ticketList.innerHTML += '<div class = "child-div" id="ticketDiv">' +
                           "<h6>Ticket ID: " + id + "</h6>" +
@@ -196,15 +200,15 @@ function ShowAllTickets() {
                           "<p> Summary: " + summ + "<p>" +
                           "<p> Priority: " + priority + "</p>" +
                           "<p> Assigned to: " + assignedTo + "</p>" + 
-                          "<p> Identified by to: " + founder + "</p>" + "</p>" + 
+                          "<p> Identified by: " + founder + "</p>" + "</p>" + 
                           "<p> Submission Date: " + subDate + "</p>" + 
                           "<p> Resolved on: " + actualdate + "</p>" +
-                          '<a href="#Detail-top" onclick = "ViewMoreDetails(\''+id+'\')" class = "btn btn-info">Details'+'</a>' + "     "+
+                          "<p> Description: " + description  + "</p>" +
+                          "<p> Resolution Summary: " + resolvesumm + "</p>" +
                           '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
                           '<button id ="closeTicketbtn" onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
-                          '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
                           '<button id ="openTicketbtn" onclick = "OpenTicket(\''+id+'\')" class = "btn btn-success">Re-Open'+"</button>" + "     " + 
-
+                          '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>"+
                            '</div>';
 
     }
@@ -226,73 +230,9 @@ function DeleteTicket(ticketID)
     console.log("Deleted: " + ticketID)
 }
 
-// Show all tickets
-/*function ShowAllTickets(){
-
-    populateFormValues()
-    document.getElementById("addNewTicket").style.display="none"; 
-    document.getElementById("showAllTickets").style.display="block";
-
-    const DivContainer = document.getElementById("div-container");
-
-    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
-    
-    console.log(ticketArray);
-
-    for(let i = 0; i < ticketArray.length; i++)
-    {
-
-        const newTkt = document.createElement("div");
-        const newTktName = document.createElement("h1");
-        const newTktProjName = document.createElement("h2");
-        const newTktSumm = document.createElement("p");
-        const newTktPrio = document.createElement("p");
-        const newtTktAssign = document.createElement("p");
-        const newTktType = document.createElement("p");
-        const newTktSubDate = document.createElement("p");
-
-        const newTktMoreDetailsBtn = document.createElement("button");
-
-        newTkt.classList.add("child-div");
-        newTktName.classList.add("tktName");
-        newTktSumm.classList.add("tktSummary");
-        newTktPrio.classList.add("tktPriority");
-        newTktType.classList.add("tktType");
-        newtTktAssign.classList.add("tktAssign")
-        newTktSubDate.classList.add("tktSubDate");
-
-        newTkt.appendChild(newTktName);
-        newTkt.appendChild(newTktProjName);
-        newTkt.appendChild(newTktSumm);
-        newTkt.appendChild(newTktPrio);
-        newTkt.appendChild(newtTktAssign);
-        newTkt.appendChild(newTktType);
-        newTkt.appendChild(newTktSubDate);
-        newTkt.appendChild(newTktMoreDetailsBtn);
-
-        newTktName.innerHTML = ticketArray[i].name;
-        newTktProjName.innerHTML = ticketArray[i].projectName;
-        newTktSumm.innerHTML = ticketArray[i].ticketSum;
-        newTktPrio.innerHTML = ticketArray[i].priority;
-        newtTktAssign.innerHTML = ticketArray[i].assignedTo;
-        newTktType.innerHTML = ticketArray[i].status;
-        newTktSubDate.innerHTML = ticketArray[i].SubDate;
 
 
-        
-        newTktMoreDetailsBtn.id = "tktMoreDetailsBtn";
-        // Add open and close and delete buttons.
-        newTktMoreDetailsBtn.innerHTML = "View more details";
-        DivContainer.appendChild(newTkt);
-
-
-    }
-    console.log("HELLO")
-
-    
-}*/
-
-function ViewMoreDetails(ticketID)
+function ShowSummary()
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
 
@@ -300,52 +240,6 @@ function ViewMoreDetails(ticketID)
 
     //document.getElementById("div-container").style.display="none";
 
-
-
-
-
-        let childDiv = document.getElementById("child-div");
-        let ticketList = document.getElementById('div-container');
-
-
-
-
-        
-      let id = ticketArray[i].id;
-      let name = ticketArray[i].name;
-      let projname = ticketArray[i].projectName;
-      let summ = ticketArray[i].ticketSum;
-      let priority = ticketArray[i].priority;
-      let assignedTo = ticketArray[i].assignedTo;
-      let founder = ticketArray[i].bugFounderList;
-      let description = ticketArray[i].description;
-      let status = ticketArray[i].status;
-      let subDate = ticketArray[i].SubDate;
-      let actualdate = ticketArray[i].actualdate;
-      let detailresolsum = ticketArray[i].resolveSummary;
-
-      ticketList.innerHTML += '<div class = "child-div">' +
-        "<h6>Ticket ID: " + id + "</h6>" +
-        "<h1>Ticket name: " + name + "</h1>" + 
-        "<p> Status: " + status + "</p>" +
-        "<p> Project: " + projname + "</p>" +
-        "<p> Summary: " + summ + "<p>" +
-        "<p> Description: " + description + "<p>" +
-        "<p> Priority: " + priority + "</p>" +
-        "<p> Assigned to: " + assignedTo + "</p>" + 
-        "<p> Identified by to: " + founder + "</p>" + "</p>" + 
-        "<p> Submission Date: " + subDate + "</p>" + 
-        "<p> Resolved on: " + actualdate + "</p>" +
-        "<p> Resolution Summary: " + detailresolsum + "</p>" +
-        '<a onclick = "ViewMoreDetails(\''+id+'\')" class = "btn btn-info">Details'+'</a>' + "     "+
-        '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
-        '<button onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
-        '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
-        '<button onclick = "OpenTicket(\''+id+'\')" class = "btn btn-primary2">Re Open'+"</button>" + "     " + 
-
-         '</div>';  
-      
-      
     
 } 
 
@@ -374,6 +268,7 @@ function OpenTicket(ticketID)
 function CloseTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    let closedTicketArray = [];
     let closeBtn = document.getElementById("closeTicketbtn");
     let openTicketbtn = document.getElementById("openTicketbtn");
     for (let i = 0; i < ticketArray.length; i++) 
@@ -384,9 +279,16 @@ function CloseTicket(ticketID)
             ticketArray[i].actualdate = new Date().toDateString();
             closeBtn.disabled = "true";
             openTicketbtn.disabled = "false";
+            
+            ticketArray[i].resolveSummary = prompt("Enter a resolution Summary");
+            //Delete from original ticket array.
+            DeleteTicket(ticketArray[i].id);
+            closedTicketArray.unshift(ticketArray[i]);
         }
     }
+    
     console.log("Closed ticket");
+    localStorage.setItem('Closed Tickets', JSON.stringify(closedTicketArray));
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
     //$("#here").load(" #here > *");
     //location.reload();

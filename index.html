@@ -222,12 +222,13 @@
                     <div id="bugs">
                         <button id="showAllTicketsBTN" onclick="ShowAllTickets()" >Show all Tickets</button>
                         <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
+                        <button id="summary" onclick="ShowSummary()">Summary</button>
                         <select name="Projectfilter" id="projectListFilter" onchange="filterByProjects()">
                             <option value="none" selected disabled hidden>Filter by Project</option>
                         </select> 
                        
                         <div id="filterdTickets">
-                            <h1>Fillterd by project</h1>
+                            <h1>Filltered by project</h1>
                         </div>
                         <form id="ticketSubmitForm">
                         <div id="addNewTicket">
@@ -235,14 +236,14 @@
                                 <ol>   
                                     <li>
                                         <label for="ticketID">Ticket ID</label>
-                                        <input type="text" name="ID" id="ticketID" value="">
+                                        <input required type="text" name="ID" id="ticketID" value="">
                                     </li>
                                     <li>
                                         <label for="ticketName">Ticket Name</label>
-                                        <input type="text" name="tktName" id="ticketName" value="">
+                                        <input required type="text" name="tktName" id="ticketName" value="">
                                     </li>
                                     <li>
-                                        <label for="projectList">Add to Project</label>
+                                        <label for="projectList">Assing to a Project</label>
                                         <select name="ProjectList" id="projectList" value="">
                                             <option value="none" selected disabled hidden>Select a Project</option>
                                         </select>                         
@@ -250,18 +251,18 @@
 
                                     <li>
                                         <label for="assignedEmployees">Assign Employee to fix bug:</label>
-                                        <select name="AssignedEmployees" id="assignedEmployees" value="">
+                                        <select required name="AssignedEmployees" id="assignedEmployees" value="">
                                             <option value="none" selected disabled hidden>select option</option>
                                         </select>
                                     </li>
                                     <li>
                                         <label for="ticketSum">Add ticket Summary:</label>
-                                         <textarea id="ticketSum" maxlength="20" cols="10" rows="2" placeholder="Add ticket Summary"></textarea>
+                                         <textarea required id="ticketSum" maxlength="20" cols="10" rows="2" placeholder="Add ticket Summary"></textarea>
                                     </li>
                                     
                                     <li>
                                         <label for="priority">Priority</label>
-                                        <select name="priority" id="ticketPriority" placeholder="choose">
+                                        <select required name="priority" id="ticketPriority" placeholder="choose">
                                             <option value="Low">Low</option>
                                             <option value="Medium">Medium</option>
                                             <option value="High">High</option>
@@ -270,17 +271,17 @@
 
                                     <li>
                                         <label for="bugfounder">Who found the bug:</label>  
-                                        <select name="bugfounder" id="bugFounder" placeholder="choose">
+                                        <select required name="bugfounder" id="bugFounder" placeholder="choose">
                                             <option value="none" selected disabled hidden>select option</option>
                                         </select>
                                     </li>
                                         <label for="targdate">When should the bug be resolved:</label>  
-                                        <input type = "date" name="targdate" id="targdate">
+                                        <input required type = "date" name="targdate" id="targdate">
                                     </select>
                                     </li>                              
                                     <li>
                                         <label for="ticketdescription">Add description:</label>
-                                        <textarea id="ticketdescription" maxlength="255" cols="10" rows="2" placeholder="Add ticket Description"></textarea>
+                                        <textarea required id="ticketdescription" maxlength="255" cols="10" rows="2" placeholder="Add ticket Description"></textarea>
                                     </li>
                                  
                                 </ol>
