@@ -163,6 +163,7 @@ function ShowAddNewTickets() {
 
 // shows all the tickets
 let clickCountTicket = 0;
+
 function ShowAllTickets() {  
     clickCountTicket++;
     if(clickCountTicket> 1){
@@ -180,26 +181,25 @@ function ShowAllTickets() {
 
    
     let tickets = JSON.parse(localStorage.getItem('Tickets'));
-    
+    let closedTickets = JSON.parse(localStorage.getItem('Closed Tickets'));
+    let allTickets = tickets.concat(closedTickets);
     let ticketList = document.getElementById('div-container');
-    
-    let openTicketbtn = document.getElementById("openTicketbtn");
-    
-    for (let i = 0; i < tickets.length; i++) {
+        
+    for (let i = 0; i < allTickets.length; i++) {
 
-      let id = tickets[i].id;
-      let name = tickets[i].name;
-      let projname = tickets[i].projectName;
-      let summ = tickets[i].ticketSum;
-      let priority = tickets[i].priority;
-      let assignedTo = tickets[i].assignedTo;
-      let status = tickets[i].status;
-      let subDate = tickets[i].SubDate;
-      let targdate = tickets[i].targdate;
-      let actualdate = tickets[i].actualdate;
-      let founder = tickets[i].bugFounderList;
-      let resolvesumm = tickets[i].resolveSummary;
-      let description = tickets[i].description;
+      let id = allTickets[i].id;
+      let name = allTickets[i].name;
+      let projname = allTickets[i].projectName;
+      let summ = allTickets[i].ticketSum;
+      let priority = allTickets[i].priority;
+      let assignedTo = allTickets[i].assignedTo;
+      let status = allTickets[i].status;
+      let subDate = allTickets[i].SubDate;
+      let targdate = allTickets[i].targdate;
+      let actualdate = allTickets[i].actualdate;
+      let founder = allTickets[i].bugFounderList;
+      let resolvesumm = allTickets[i].resolveSummary;
+      let description = allTickets[i].description;
       
       
       ticketList.innerHTML += '<div class = "child-div" id="ticketDiv">' +
@@ -212,10 +212,10 @@ function ShowAllTickets() {
                           "<p> Assigned to: " + assignedTo + "</p>" + 
                           "<p> Identified by: " + founder + "</p>" + "</p>" + 
                           "<p> Submission Date: " + subDate + "</p>" + 
+                          "<p> Target Date: " + targdate + "</p>" + 
                           "<p> Resolved on: " + actualdate + "</p>" +
                           "<p> Description: " + description  + "</p>" +
                           "<p> Resolution Summary: " + resolvesumm + "</p>" +
-                          '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
                           '<button id ="closeTicketbtn" onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
                           '<button id ="openTicketbtn" onclick = "OpenTicket(\''+id+'\')" class = "btn btn-success">Re-Open'+"</button>" + "     " + 
                           '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>"+
@@ -228,16 +228,30 @@ function ShowAllTickets() {
 function DeleteTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    let closedTicketArray = JSON.parse(localStorage.getItem('Closed Tickets'));
     for(let i=0; i<ticketArray.length; i++) 
     {
         if(ticketArray[i].id == ticketID)
         {
             ticketArray.splice(i,1);
         }
+        else if(closedTicketArray[i].id == ticketID)
+        {
+            closedTicketArray.splice(i,1);
+        }
+    }
+    for(let i=0; i<closedTicketArray.length; i++) 
+    {
+        if(closedTicketArray[i].id == ticketID)
+        {
+            closedTicketArray.splice(i,1);
+        }
     }
     localStorage.setItem('Tickets', JSON.stringify(ticketArray)); 
-    window.location.reload(true);
+    localStorage.setItem('Closed Tickets', JSON.stringify(closedTicketArray));
+    
     console.log("Deleted: " + ticketID)
+    ShowAllTickets();
 }
 
 
@@ -257,51 +271,57 @@ function ShowSummary()
 function OpenTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
-    let closeBtn = document.getElementById("closeTicketbtn");
-    let openTicketbtn = document.getElementById("openTicketbtn");
+    let closedTicketArray = JSON.parse(localStorage.getItem('Closed Tickets'));
 
-    for (let i = 0; i < ticketArray.length; i++) 
+
+    for (let i = 0; i < closedTicketArray.length; i++) 
     {
-        if (ticketArray[i].id == ticketID)
+        if (closedTicketArray[i].id == ticketID)
         {
-            ticketArray[i].status ="Open";
-            ticketArray[i].actualdate = "Pending.....";
-            closeBtn.disabled = "false";
-            openTicketbtn.disabled = "true";
+            closedTicketArray[i].status ="Open";
+            closedTicketArray[i].actualdate = "Pending.....";
+            closedTicketArray[i].resolveSummary = "";
+
+
+            ticketArray.unshift(closedTicketArray[i]);
+            closedTicketArray.splice(i,1);
         }
     }
     console.log("Opened ticket");
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
-    //$("#here").load(" #here > *");
+    localStorage.setItem('Closed Tickets', JSON.stringify(closedTicketArray));
+
+
+    ShowAllTickets()
 }
 
 function CloseTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
     let closedTicketArray = [];
-    let closeBtn = document.getElementById("closeTicketbtn");
-    let openTicketbtn = document.getElementById("openTicketbtn");
+
     for (let i = 0; i < ticketArray.length; i++) 
     {
         if (ticketArray[i].id == ticketID)
         {
             ticketArray[i].status ="Resolved";
             ticketArray[i].actualdate = new Date().toDateString();
-            closeBtn.disabled = "true";
-            openTicketbtn.disabled = "false";
+
             
             ticketArray[i].resolveSummary = prompt("Enter a resolution Summary");
-            //Delete from original ticket array.
-            DeleteTicket(ticketArray[i].id);
+
+            //Delete from open ticket array.
             closedTicketArray.unshift(ticketArray[i]);
+            ticketArray.splice(i,1);
         }
     }
     
     console.log("Closed ticket");
     localStorage.setItem('Closed Tickets', JSON.stringify(closedTicketArray));
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
-    //$("#here").load(" #here > *");
-    //location.reload();
+
+    ShowAllTickets()
+
 }
 
 
@@ -318,6 +338,9 @@ function editTicket()
     document.getElementById("showAllTickets").style.display="block"; 
     document.getElementById("filterdTickets").style.display="none";
     document.getElementById("editTicketForm").style.display="none"; 
+
+
+    ShowAllTickets();
 
 }
 
