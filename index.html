@@ -319,16 +319,16 @@
                                                     </label>
                                                     <form method="post">
                                                         <div class="mb-3">
-                                                            <input class="form-control" type="text"  id="ticketID" name="name" placeholder="Ticket ID">
+                                                            <input class="form-control" type="text"  id="editTicketID" name="name" placeholder="Ticket ID">
                                                         </div>
                                                             <label class="form-label">
                                                                 <span style="color: rgb(52, 58, 64);">Ticket Name</span>
                                                             </label>
-                                                            <input class="form-control" type="text" id="ticketName" name="name" placeholder="Ticket Name">
+                                                            <input class="form-control" type="text" id="editTicketName" name="name" placeholder="Ticket Name">
                                                             <label class="form-label">
                                                                 <span style="color: rgb(52, 58, 64);">Project Name</span>
                                                         </label>
-                                                        <select class="form-select" name="ProjectList" id="projectList">
+                                                        <select class="form-select" name="ProjectList" id="editProjectList">
                                                             <option value="none" selected disabled hidden>Select a Project</option>
                                                         </select>
                                                         <div class="mb-3"></div>
@@ -337,37 +337,37 @@
                                                                 <span style="color: rgb(52, 58, 64);">Assign Employee</span>
                                                                 
                                                             </label>
-                                                        <select class="form-select" name="AssignedEmployees" id="assignedEmployees">
+                                                        <select class="form-select" name="AssignedEmployees" id="editAssignedEmployees">
                                                             <option value="none" selected disabled hidden>Select a Project</option>
                                                         </select>
                                                         <label class="form-label">
                                                             <span style="color: rgb(52, 58, 64);">Ticket Summary</span>
                                                         </label>
-                                                        <input class="form-control" type="text" id="ticketSum" name="name" placeholder="Ticket Summary">
+                                                        <input class="form-control" type="text" id="editTicketSum" name="name" placeholder="Ticket Summary">
                                                         <label class="form-label">
                                                             <span style="color: rgb(52, 58, 64);">Priority</span>
                                                         </label>
-                                                            <select class="form-select" name="priority" id="ticketPriority">
+                                                            <select class="form-select" name="priority" id="editTicketPriority">
                                                                 <option value="Low">Low</option>
                                                                 <option value="Medium">Medium</option>
                                                                 <option value="High">High</option>
                                                             </select>
                                                         <label class="form-label"><span style="color: rgb(52, 58, 64);">Who found the bug:</span>
                                                         </label>
-                                                        <select class="form-select" name="bugfounder" id="bugFounder" >
+                                                        <select class="form-select" name="bugfounder" id="editBugFounder" >
                                                             <option value="none" selected disabled hidden>select option</option>
                                                         </select>
                                                         <label class="form-label">
                                                             <span style="color: rgb(52, 58, 64);">Resolve by date:</span>
                                                         </label>
-                                                        <input class="form-control" type="date" id="targdate">
+                                                        <input class="form-control" type="date" id="editTargdate">
                                                         <label class="form-label">
                                                             <span style="color: rgb(52, 58, 64);">Description</span>
                                                         </label>
-                                                        <textarea class="form-control" id="ticketdescription" name="descriptionTicket" rows="6" placeholder="Message"></textarea>
+                                                        <textarea class="form-control" id="editTicketdescription" name="descriptionTicket" rows="3" placeholder="Message"></textarea>
                                                     </div>
                                                         <div>
-                                                            <button class="btn btn-primary d-block w-100" type="submit" onclick="editTicket()">Submit</button>
+                                                            <button class="btn btn-primary d-block w-100" type="button" onclick="editTicket()">Submit</button>
                                                         </div>
                                                     </form>
                                                 </div>
