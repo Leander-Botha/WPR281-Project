@@ -66,3 +66,7 @@ input{
 {   
     position: relative;
 }
+#openTicketbtn
+{
+    disabled: true;
+}
