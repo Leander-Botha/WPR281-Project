@@ -1,4 +1,4 @@
-
+// initial populate dropdowns
 function populateFormValues()
 {
     const bugFounderList = document.getElementById("bugFounder");
@@ -42,17 +42,57 @@ function populateFormValues()
     
 }
 
+// filter tickets by project
+function filterByProjects() {
+    let filterProj = document.getElementById('projectListFilter').value;
+    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
 
-// create a ticket
-function ShowAddNewTickets(){
-    //document.getElementById("div-container").style.display="none"; 
-   //document.getElementById("addNewTicket").style.display="block";
-   //fetchTickets();
+    document.getElementById("addNewTicket").style.display="none";
+    document.getElementById("showAllTickets").style.display="none"; 
+    document.getElementById("filterdTickets").style.display="block"; 
+    document.getElementById("editTicketForm").style.display="none"; 
     
+
+    let ticketList = document.getElementById('filterdTickets');
+    for (let m = 0; m < ticketArray.length ; m++) {
+        if (ticketArray[m].projectName == filterProj) {
+            console.log(ticketArray[m])
+            let id = ticketArray[m].id;
+            let name = ticketArray[m].name;
+            let projname = ticketArray[m].projectName;
+            let summ = ticketArray[m].ticketSum;
+            let priority = ticketArray[m].priority;
+            let assignedTo = ticketArray[m].assignedTo;
+            let status = ticketArray[m].status;
+            let subDate = ticketArray[m].SubDate;
+            let actualdate = ticketArray[m].actualdate;
+            let founder = ticketArray[m].bugFounderList;
+            
+            ticketList.innerHTML += '<div class = "child-div" id="ticketDiv">' +
+                                "<h6>Ticket ID: " + id + "</h6>" +
+                                "<h1>Ticket name: " + name + "</h1>" + 
+                                "<p> Status: " + status + "</p>" +
+                                "<p> Project: " + projname + "</p>" +
+                                "<p> Summary: " + summ + "<p>" +
+                                "<p> Priority: " + priority + "</p>" +
+                                "<p> Assigned to: " + assignedTo + "</p>" + 
+                                "<p> Identified by to: " + founder + "</p>" + "</p>" + 
+                                "<p> Submission Date: " + subDate + "</p>" + 
+                                "<p> Resolved on: " + actualdate + "</p>" +
+                                '<a href="#Detail-top" onclick = "ViewMoreDetails(\''+id+'\')" class = "btn btn-info">Details'+'</a>' + "     "+
+                                '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
+                                '<button id ="closeTicketbtn" onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
+                                '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
+                                '<button id ="openTicketbtn" onclick = "OpenTicket(\''+id+'\')" class = "btn btn-success">Re-Open'+"</button>" + "     " + 
+
+                                '</div>';
+        }   
+    }    
 }
 
 
 
+// create a ticket
 function submitTicket() {
     // let CurrentDay = new Date();
      let ticketID = document.getElementById("ticketID").value;
@@ -96,51 +136,79 @@ function submitTicket() {
        localStorage.setItem('Tickets', JSON.stringify(ticketArray));
      }
      document.getElementById("ticketSubmitForm").reset();
+     
  }
  document.getElementById("submitTicket").addEventListener("click",submitTicket);
  
 
+// shows the create a bug div and hide the rest
+function ShowAddNewTickets() {
+    document.getElementById("addNewTicket").style.display="block";
+    document.getElementById("showAllTickets").style.display="none"; 
+    document.getElementById("filterdTickets").style.display="none"; 
+    document.getElementById("editTicketForm").style.display="none"; 
+}
 
- function ShowAllTickets() {
+
+
+// shows all the tickets
+let clickCountTicket = 0;
+function ShowAllTickets() {  
+    clickCountTicket++;
+    if(clickCountTicket> 1){
+        while (document.getElementById('ticketDiv') != null )  {
+            let removeDivs = document.getElementById('ticketDiv');
+            removeDivs.remove();
+        }
+        
+    }
+
+    document.getElementById("addNewTicket").style.display="none";
+    document.getElementById("showAllTickets").style.display="block"; 
+    document.getElementById("filterdTickets").style.display="none";
+    document.getElementById("editTicketForm").style.display="none"; 
+
+   
     let tickets = JSON.parse(localStorage.getItem('Tickets'));
     
     let ticketList = document.getElementById('div-container');
     
-
+    let openTicketbtn = document.getElementById("openTicketbtn");
     
     for (let i = 0; i < tickets.length; i++) {
+
       let id = tickets[i].id;
       let name = tickets[i].name;
+      let projname = tickets[i].projectName;
       let summ = tickets[i].ticketSum;
       let priority = tickets[i].priority;
       let assignedTo = tickets[i].assignedTo;
       let status = tickets[i].status;
       let subDate = tickets[i].SubDate;
       let actualdate = tickets[i].actualdate;
+      let founder = tickets[i].bugFounderList;
       
-      ticketList.innerHTML += '<div class = "child-div">' +
+      ticketList.innerHTML += '<div class = "child-div" id="ticketDiv">' +
                           "<h6>Ticket ID: " + id + "</h6>" +
                           "<h1>Ticket name: " + name + "</h1>" + 
                           "<p> Status: " + status + "</p>" +
-                          "<p> Summary: " + summ + "</h3>" +
+                          "<p> Project: " + projname + "</p>" +
+                          "<p> Summary: " + summ + "<p>" +
                           "<p> Priority: " + priority + "</p>" +
                           "<p> Assigned to: " + assignedTo + "</p>" + 
+                          "<p> Identified by to: " + founder + "</p>" + "</p>" + 
                           "<p> Submission Date: " + subDate + "</p>" + 
                           "<p> Resolved on: " + actualdate + "</p>" +
                           '<a href="#Detail-top" onclick = "ViewMoreDetails(\''+id+'\')" class = "btn btn-info">Details'+'</a>' + "     "+
                           '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
-                          '<button onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
+                          '<button id ="closeTicketbtn" onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
                           '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
-                          '<button onclick = "OpenTicket(\''+id+'\')" class = "btn btn-primary2">Open'+"</button>" + "     " + 
+                          '<button id ="openTicketbtn" onclick = "OpenTicket(\''+id+'\')" class = "btn btn-success">Re-Open'+"</button>" + "     " + 
 
                            '</div>';
+
     }
   }
-
-function viewMoreDetails() 
-{
- console.log("More details were shown");
-}
 
 
 function DeleteTicket(ticketID)
@@ -157,22 +225,6 @@ function DeleteTicket(ticketID)
     window.location.reload(true);
     console.log("Deleted: " + ticketID)
 }
-// filter on click
-/*document.getElementById("projectListFilter").onchange = function()
-{
-    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
-    for(let i=0; i<ticketArray.length; i++) 
-    {
-        if(ticketArray[i].projectName==this.value)
-        {
-            console.log("yes");//hy log actually yes so
-                                // hy kan sien hoeveel tickets daai project het maar ek weni hoe ek sal kan display nie
-        }
-    }
-    
-};*/
-
-// Display ticket on click
 
 // Show all tickets
 /*function ShowAllTickets(){
@@ -240,89 +292,104 @@ function DeleteTicket(ticketID)
     
 }*/
 
-function ViewMoreDetails()
+function ViewMoreDetails(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
 
-    document.getElementById("ticketDetails").style.display="block";
-    document.getElementById("addNewTicket").style.display="none"; 
+    //document.getElementById("addNewTicket").style.display="none"; 
 
     //document.getElementById("div-container").style.display="none";
 
 
 
 
-        for(let i = 0; i < ticketArray.length; i++)
-        {   
 
-        const DetailTktID = document.getElementById("ticketID")
-        const DetailTktName = document.getElementById("ticketTitle");
-        const DetailProjName = document.getElementById("projectName");
-        const DetailIdentifiedby = document.getElementById("identifiedBy");
-        const DetailAssign = document.getElementById("assignedEmp");
-        const DetailPrio = document.getElementById("detpriority");
-        const DetailType = document.getElementById("dettype");
-        const DetailDesc = document.getElementById("ticketDescription");
-        const DetailDateIdent = document.getElementById("dateIdenfiied");
-        const DetailTargDate = document.getElementById("trgtResolutionDate");
-        const DetailActDate = document.getElementById("actResolutionDate");
-        const DetailResolSum = document.getElementById("resolSummary");
+        let childDiv = document.getElementById("child-div");
+        let ticketList = document.getElementById('div-container');
 
-        const listAssingedEmp = document.getElementById("lstassignedEmp");
-               DetailTktID.innerHTML = ticketArray[i].id
-               DetailTktName.innerHTML = ticketArray[i].name;
-               DetailProjName.innerHTML = ticketArray[i].projectName;
-               DetailIdentifiedby.innerHTML = ticketArray[i].Founder;
-               DetailAssign.innerHTML = ticketArray[i].assignedTo;
-               DetailPrio.innerHTML = ticketArray[i].priority;
-               DetailType.innerHTML = ticketArray[i].status;
-               DetailDesc.innerHTML = ticketArray[i].description;
-               DetailDateIdent.innerHTML = ticketArray[i].subDate;
-               DetailTargDate.innerHTML = ticketArray[i].targdate;
-               DetailActDate.innerHTML = ticketArray[i].actualdate;
-               DetailResolSum.innerHTML = ticketArray[i].resolsum;
 
-               for(const User of users)
-               {
-                   let option = document.createElement("option");    
-                   option.value = User.name;
-                   option.innerHTML = User.name;
-                   listAssingedEmp.appendChild(option);
-               }
-        }     
+
+
+        
+      let id = ticketArray[i].id;
+      let name = ticketArray[i].name;
+      let projname = ticketArray[i].projectName;
+      let summ = ticketArray[i].ticketSum;
+      let priority = ticketArray[i].priority;
+      let assignedTo = ticketArray[i].assignedTo;
+      let founder = ticketArray[i].bugFounderList;
+      let description = ticketArray[i].description;
+      let status = ticketArray[i].status;
+      let subDate = ticketArray[i].SubDate;
+      let actualdate = ticketArray[i].actualdate;
+      let detailresolsum = ticketArray[i].resolveSummary;
+
+      ticketList.innerHTML += '<div class = "child-div">' +
+        "<h6>Ticket ID: " + id + "</h6>" +
+        "<h1>Ticket name: " + name + "</h1>" + 
+        "<p> Status: " + status + "</p>" +
+        "<p> Project: " + projname + "</p>" +
+        "<p> Summary: " + summ + "<p>" +
+        "<p> Description: " + description + "<p>" +
+        "<p> Priority: " + priority + "</p>" +
+        "<p> Assigned to: " + assignedTo + "</p>" + 
+        "<p> Identified by to: " + founder + "</p>" + "</p>" + 
+        "<p> Submission Date: " + subDate + "</p>" + 
+        "<p> Resolved on: " + actualdate + "</p>" +
+        "<p> Resolution Summary: " + detailresolsum + "</p>" +
+        '<a onclick = "ViewMoreDetails(\''+id+'\')" class = "btn btn-info">Details'+'</a>' + "     "+
+        '<button onclick = "EditTicket(\''+id+'\')" class = "btn btn-dark">Edit'+"</button>"  + "     " +
+        '<button onclick = "CloseTicket(\''+id+'\')" class = "btn btn-primary">Close' +"</button>" + "    " +
+        '<button onclick = "DeleteTicket(\''+id+'\')" class = "btn btn-danger">Delete'+"</button>" + "     " + 
+        '<button onclick = "OpenTicket(\''+id+'\')" class = "btn btn-primary2">Re Open'+"</button>" + "     " + 
+
+         '</div>';  
+      
+      
+    
 } 
 
 
 function OpenTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    let closeBtn = document.getElementById("closeTicketbtn");
+    let openTicketbtn = document.getElementById("openTicketbtn");
+
     for (let i = 0; i < ticketArray.length; i++) 
     {
         if (ticketArray[i].id == ticketID)
         {
             ticketArray[i].status ="Open";
             ticketArray[i].actualdate = "Pending.....";
+            closeBtn.disabled = "false";
+            openTicketbtn.disabled = "true";
         }
     }
-    console.log("opened");
+    console.log("Opened ticket");
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
-    $("#here").load(" #here > *");
+    //$("#here").load(" #here > *");
 }
 
 function CloseTicket(ticketID)
 {
     let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+    let closeBtn = document.getElementById("closeTicketbtn");
+    let openTicketbtn = document.getElementById("openTicketbtn");
     for (let i = 0; i < ticketArray.length; i++) 
     {
         if (ticketArray[i].id == ticketID)
         {
             ticketArray[i].status ="Resolved";
             ticketArray[i].actualdate = new Date().toDateString();
+            closeBtn.disabled = "true";
+            openTicketbtn.disabled = "false";
         }
     }
-    console.log("Closed");
+    console.log("Closed ticket");
     localStorage.setItem('Tickets', JSON.stringify(ticketArray));
-    location.reload();
+    //$("#here").load(" #here > *");
+    //location.reload();
 }
 
 
@@ -335,6 +402,11 @@ function editTicket()
 {
 //contentEditable="true"   //maak dat jy op die input kan click en weer begin type maar ja 
 //editing kon ek nog nie uitfigure nie maar dis iets 
+    document.getElementById("addNewTicket").style.display="none";
+    document.getElementById("showAllTickets").style.display="block"; 
+    document.getElementById("filterdTickets").style.display="none";
+    document.getElementById("editTicketForm").style.display="none"; 
+
 }
 
 
