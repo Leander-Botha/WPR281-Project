@@ -1,6 +1,16 @@
 // initial populate dropdowns
+let theCounter = 0;
 function populateFormValues()
 {
+    theCounter++;
+    if(theCounter> 1){
+        document.getElementById("bugFounder").empty();
+        document.getElementById("assignedEmployees").empty();
+        document.getElementById("projectList").empty();
+        document.getElementById("projectListFilter").empty();
+    
+    }
+
     const bugFounderList = document.getElementById("bugFounder");
     const employeeList = document.getElementById("assignedEmployees");
     const projectList = document.getElementById("projectList");

@@ -62,7 +62,7 @@ function ShowEmp() {
         newDiv.id = 'employeeDiv'
 	    newDiv.classList.add("child-div");
 	    DivContainer.appendChild(newDiv);
-	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"
+	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"+"<hr>"+"<br>"
 	                     +"Name: "+ theUsers[n].Name +"<br>"
 	                    +"Surname: "+ theUsers[n].Surname +"<br>"
 	                    +"Email: "+ theUsers[n].Email

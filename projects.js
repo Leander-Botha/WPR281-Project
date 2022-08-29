@@ -1,11 +1,9 @@
 // Create a new Project
 function newProj() {
-    // let projID = theProjects.length + 1;
 	let nameP = document.getElementById("projName").value;
 	let descriptionP = document.getElementById("projDetail").value;
 
     let project = {
-        // id: projID,
         name: nameP,
         description: descriptionP
     }
@@ -19,7 +17,6 @@ function newProj() {
         let theProjects = JSON.parse(localStorage.getItem('theProjects'));
         theProjects.push(project);
         localStorage.setItem('theProjects', JSON.stringify(theProjects));
-
     }
 
     resetForm();
@@ -48,7 +45,6 @@ function ShowProj() {
         let Name = theProjects[j].name;
         let desc = theProjects[j].description;
         ShowAllProj(Name,desc)
-        console.log()
     }
 }
 
