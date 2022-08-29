@@ -9,8 +9,6 @@ input{
 }
 .btn-primary {
     color: #fff;
-    background-color:crimson;
-    border-color: crimson;
 }
 .btn-primary2 {
     color: #fff;
@@ -19,6 +17,7 @@ input{
 }
 .child-div 
  {
+    font-family: 'Poppins', sans-serif;
     max-width: fit-content;
     max-height: fit-content;
     min-width: 100px;
@@ -57,12 +56,20 @@ input{
 
 
 }
-.tktMoreDetailsBtn
+/* .tktMoreDetailsBtn
 
 {
 
-}
+} */
 #showAllTickets
 {   
     position: relative;
+}
+#addButton{
+    position:absolute;
+    bottom: 0;;
+}
+#empDetails{
+    display: flex;
+    flex-direction: row;
 }

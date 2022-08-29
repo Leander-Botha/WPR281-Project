@@ -7,10 +7,11 @@
     <title>BUG TRACKING SYSTEM</title>
     <script src="./js/AdminL.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/AdminL.css">
     <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="ander.css">
+    <link rel="stylesheet" href="./css/ander.css">
 </head>
 <!-- p-3 mb-2 bg-transparent text-dark is bootstrap gradient code this is only for main background -->
 <body class="p-3 mb-2 bg-transparent text-dark">
@@ -142,45 +143,84 @@
                         <h6><strong id="heading">Dashboard</strong></h6>
                     </div>
                     <div id="dashboard">
-                        <header>
-                            …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ …ᘛ⁐̤ᕐᐷ…ᘛ⁐̤ᕐᐷ
-                        </header>
+                        <div class="cards">
+            
+                            <div class="card-single">
+                                <i class='bx bx-bug-alt'></i>
+                                <h1>12</h1>
+                                <span>bugs</span>
+                            </div>
+                        
+                            
+                
+                            <div class="card-single">
+                                <i class='bx bx-group icon' ></i>
+                                <h1>5</h1>
+                                <span>Members</span>
+                            </div>
+                            
+                           
+                
+                            <div class="card-single">
+                                <i class='bx bx-chalkboard icon' ></i>
+                                <h1>1</h1>
+                                <span>projects</span>
+                        
+                            </div>
+                    
+                
+                            <div class="card-single">
+                                <i class='bx bx-timer icon' ></i>
+                                <h1>52%</h1>
+                                <span>Progress</span>
+                    
+                            </div>
+                            
+                    
+                        </div>
+                        <!-- <div class="Dash">
+                            <div class="Dash-panel">
+                                <h1>Dashboard</h1>
+                                <span>20</span>
+                            </div>
+                            
+                        </div> -->
                     </div>
                     <div id="employees">
-                        <button onclick="ShowEmp()">Show All </button>
-                        <button onclick="NewUser()">Add New</button>
+                        <div class="m-3 w-75 alert alert-warning" role="alert">
+                            <h6>There are no Employees currently, add one!</h6>
+                        </div>
+                        <!-- check if there is currently users in storage -->
+                        <div class="d-flex justify-content-center">
+                            <div id="addButton" class="w-50">
+                                <button type="button" class="m-1 w-75 btn btn-info" onclick="ShowEmp()">View Employees</button>
+                                <button type="button" class="m-1 w-75 btn btn-primary" onclick="NewUser()">Add New</button>
+                            </div>
+                        </div>
+                        <div id="empDetails">
 
-                        <div id="empDetails" >
-                            <h1>All Employees</h1>
                         </div>
 
-                        <div id="addEmp">
-                            <h1>Enter your details</h1>
+                        <div id="addEmp" class="m-3">
+                            <h6><strong>Enter your details</strong></h6>
                             <fieldset>
-                                <ul>  
-                                  <li>
-                                    <label for="Name">Name:</label>
-                                    <input type="text" id="firstName">
-                                  </li>
+                                <div class="input-group mb-3">
+                                    <input id="firstName" type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input id="userSurname" type="text" class="form-control" placeholder="Surname" aria-label="Surname" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">@</span>
+                                    <input id="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
+                                  
+                                  <div class="input-group mb-3">
+                                    <input id="userEMail" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                  </div>
                       
-                                  <li>
-                                    <label for="Surname">Surname:</label>
-                                    <input type="text" id="userSurname">
-                                  </li>
-
-                                  <li>
-                                    <label for="Email">Email:</label>
-                                    <input type="text" id="userEMail">
-                                  </li>
-
-                                  <li>
-                                    <label for="Username">Username:</label>
-                                    <input type="text" id="username">
-                                  </li>
-                      
-                                </ul>
-                      
-                                <button type="button" id="btnSubmit" onclick="AddUser()">Submit</button>
+                                <button type="button" class="w-100 btn btn-primary" id="btnSubmit" onclick="AddUser()">Submit</button>
                               </fieldset>
                         </div>
                          
@@ -188,111 +228,100 @@
 
 
                     <div id="projects">
-                        <button onClick="ShowProj()">Show all</button>
-                        <button id="addNewTicketBtn" onClick="createProj()">Add New</button>
                         
-                        
-
-                        <div id="showAll">
-                            <div>
-                                <h1>Showing All the project</h1>
+                        <div class="d-flex justify-content-center" id="empDetails" >
+                            <div class="m-3 w-100 alert alert-warning" role="alert">
+                                <h6>There are no Projects currently, add one!</h6>
                             </div>
 
+                            <div id="addButton" class="w-50">
+                                <button type="button" class="m-1 w-75 btn btn-info" onclick="ShowProj()">View Projects</button>
+                                <button type="button" class="m-1 w-75 btn btn-primary" onclick="createProj()">Add New</button>
+                            </div>
+                        </div>
+
+                        <div id="showAll">
+                            
                         </div>
                         
 
-                        <div id="newProj" >
+                        <div id="newProj" class="m-2">
                             <div>
-                                <h1>Add a project</h1>
+                                <h6><strong>Add a project</strong></h6>
                             </div>
-                            <ul>  
-                              <li>
-                                <label for="Name">Project Name:</label>
-                                <input type="text" id="projName">
-                              </li>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input id="projName" type="text" class="form-control" placeholder="Project Name" aria-label="Project Name" aria-describedby="basic-addon1">
+                              </div>
+                              
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Descripsion</span>
+                                <textarea id="projDetail" class="form-control" aria-label="With textarea"></textarea>
+                            </div>
                   
-                              <li>
-                                <label for="Detail">Project Detail:</label>
-                                <input type="text" id="projDetail">
-                              </li>
-                  
-                            </ul>
-                  
-                            <button type="button" onclick="newProj()" id="btnCreateProj">Createproject</button>
+                            <button class="w-100 btn btn-primary" type="button" onclick="newProj()" id="btnCreateProj">Create Project</button>
                         </div>
 
                     </div>
 
                     <div id="bugs">
-                        <button id="showAllTickets" onclick="ShowAllTickets()" >Show all Tickets</button>
-                        <button id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
+                        <button class="btn btn-primary" id="showAllTickets" onclick="ShowAllTickets()" >Show all Tickets</button>
+                        <button class="btn btn-info" id="CreateBug" onclick="ShowAddNewTickets()">Add New Tickets</button>
 
                         
-                                        <select name="Projectfilter" id="projectListFilter" selected value="" >
-                                            <option value="none" selected disabled hidden>Filter by Project</option>
-                                        </select> 
+                        <select name="Projectfilter" id="projectListFilter" selected value="" >
+                            <option value="none" selected disabled hidden>Filter by Project</option>
+                        </select> 
                        
 
                         <form id="ticketSubmitForm">
-                        <div id="addNewTicket">
-                            <h1>Create a bug</h1>
-                                <ol>   
-                                    <li>
-                                        <label for="ticketID">Ticket ID</label>
-                                        <input type="text" name="ID" id="ticketID" value="">
-                                    </li>
-                                    <li>
-                                        <label for="ticketName">Ticket Name</label>
-                                        <input type="text" name="tktName" id="ticketName" value="">
-                                    </li>
-                                    <li>
-                                        <label for="projectList">Add to Project</label>
-                                        <select name="ProjectList" id="projectList" value="">
-                                            <option value="none" selected disabled hidden>Select a Project</option>
-                                        </select>                         
-                                    </li>   
-
-                                    <li>
-                                        <label for="assignedEmployees">Assign Employee to fix bug:</label>
-                                        <select name="AssignedEmployees" id="assignedEmployees" value="">
-                                            <option value="none" selected disabled hidden>select option</option>
-                                        </select>
-                                    </li>
-                                    <li>
-                                        <label for="ticketSum">Add ticket Summary:</label>
-                                         <textarea id="ticketSum" maxlength="20" cols="10" rows="2" placeholder="Add ticket Summary"></textarea>
-                                    </li>
-                                    
-                                    <li>
-                                        <label for="priority">Priority</label>
-                                        <select name="priority" id="ticketPriority" placeholder="choose">
-                                            <option value="Low">Low</option>
-                                            <option value="Medium">Medium</option>
-                                            <option value="High">High</option>
-                                        </select>
-                                    </li>                                
-
-                                    <li>
-                                        <label for="bugfounder">Who found the bug:</label>  
-                                        <select name="bugfounder" id="bugFounder" placeholder="choose">
-                                            <option value="none" selected disabled hidden>select option</option>
-                                        </select>
-                                    </li>
-                                        <label for="targdate">When should the bug be resolved:</label>  
-                                        <input type = "date" name="targdate" id="targdate">
-                                    </select>
-                                    </li>                              
-                                    <li>
-                                        <label for="ticketdescription">Add description:</label>
-                                        <textarea id="ticketdescription" maxlength="255" cols="10" rows="2" placeholder="Add ticket Description"></textarea>
-                                    </li>
-                                 
-                                </ol>
-                                
-                                <button name="submit" id="submitTicket" onclick="CreateTicket()" value="">Submit</button>
-                            
-                        </div>
+                            <div class="m-2" id="addNewTicket">
+                            <h6><strong>Add Bug</strong></h6>
+                                <div class="input-group mb-3">
+                                    <input id="ticketID" name="ID" type="text" class="form-control" placeholder="Ticket ID" aria-label="Ticket ID" aria-describedby="basic-addon1">
+                                </div>
+                                 <div class="input-group mb-3">
+                                     <input id="ticketName" name="tktName" type="text" class="form-control" placeholder="Ticket Name" aria-label="Ticket Name" aria-describedby="basic-addon1">
+                                 </div>
+                                 <div class="input-group mb-3">
+                                      <select class="form-control" name="ProjectList" id="projectList" value="">
+                                          <option value="none" selected disabled hidden>Select a project</option>
+                                      </select>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                      <select class="form-control" name="AssignedEmployees" id="assignedEmployees" value="">
+                                          <option value="none" selected disabled hidden>Select a project</option>
+                                      </select>
+                                  </div>
+                                  <div class="input-group mb-3">
+                                      <span class="input-group-text">Descripsion</span>
+                                      <textarea id="ticketSum" class="form-control" aria-label="With textarea"></textarea>
+                                  </div>
+                                 <div>
+                                     <select class="form-control mb-3" name="priority" id="ticketPriority" placeholder="choose">
+                                         <option value="Low">Low</option>
+                                         <option value="Medium">Medium</option>
+                                         <option value="High">High</option>
+                                     </select>
+                                 </div>
+                                  <div>
+                                     <select class="form-control mb-3" name="bugfounder" id="bugFounder" placeholder="choose">
+                                         <option value="none" selected disabled hidden>select option</option>
+                                     </select>
+                                 </div>
+                                 <div id="date-picker-example" class="md-form md-outline datepicker mb-3" inline="true">
+                                     <input placeholder="Select date" type="date" name="targdate" id="targdate" class="form-control">
+                                 </div>
+                                 <div class="input-group mb-3">
+                                     <span class="input-group-text">Descripsion</span>
+                                     <textarea id="ticketdescription" class="form-control" aria-label="With textarea"></textarea>
+                                 </div>
+     
+                                     <button class="btn btn-primary w-100 rounded" name="submit" id="submitTicket" onclick="CreateTicket()" value="">Submit</button>
+                    
+                            </div>
                         </form>
+                    
 
                         <div id="showAllTickets">
                             <h1>All the tickets</h1>
@@ -347,20 +376,30 @@
                     <div id="admin">
                         admin login
                     </div>
-                    <div id="info">
-                        
+                    <div id="info" class="m-2">
+                        <h6><strong>WPR 281 Project Summery</strong></h6><br>
+                        <p class="m-2">This  specification  describes  how  to  create  an  application that tracks the assignment, status, and progress of issues related  to  a  project.  The scope  has  been  deliberately limiteddue to time constraints.I would however encourage you   to add   features   and   add   thisprojectto   your repositories on GitHub.</p>
+                        <br>
+                        <p class="m-2">The system must be used via a web interface created using markup. Here is an example of an interface that can be used to build the system. It is just a sample,and you must only use it to visualise the kind of system that is required. There are plenty of other examples that you can look at for ideas.The picture displayed below only shows the summary of issues.</p>
+                        <br>
+                        <p class="m-2">Once an issue is clicked, details of the issue must be displayedin an intuitive fashion. More on this later in the functional requirements.</p>
                     </div>
-                    <div id="credit">
-                        yeet credit
+                    <div id="credit" class="m-2">
+                        <h6><strong>Group Partisipasion</strong></h6><br>
+                        Keenan Lombard - Frontend Dev <br><br>
+                        Dewald Dirks   -Frontend Dev <br><br>
+                        Juanro Minne - Backend Dev <br><br>
+                        Leander Botha - Backend Dev <br><br>
+                        Johan Linderque - Backend Dev <br>
                     </div>
                     <div id="api">
-                        some apiiii
+                        We did not use any api's
                     </div>
                 </div>
                 <!-- xxxxxxxxxxxxxxxxxxxx------------main-window---------------xxxxxxxxxxxxxxxxxx -->
             </div>
             <!-- --------------------------------------footer-------------------------------------- -->
-        <!-- <footer class="w-100 d-flex bg-dark text-light p-5 footer">
+        <footer class="w-100 d-flex bg-dark text-light p-5 footer">
             <div class="w-50 pl-5">
                 <ul class="list-group footer-list pl-5 text-center">
                     <li class="m-1">Dewald Willem Dirks</li>
@@ -381,7 +420,7 @@
                 <h3>User</h3>
                 <label>Ok</label>
             </div>
-        </DIV> -->
+        </DIV>
     </header>
 
     <!-- This is for the popup menu -->
@@ -391,23 +430,51 @@
 
 
     <div class="Login-box" id="myForm">
-        <form  class="form-container">
+        <form  class="container">
             <h2>Admin Login</h2>
-            <div class="User-box">
-                <input type="text" id="username" >
-                <label>Username</label>
+            <div class="form">
+                <div class="user">
+                    <input type="text" id="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="password">    
+                    <input type="password" id="userPass" required>
+                    <label>password</label>
+                </div>
             </div>
-            <div  class="User-box">
-                <input type="password" id="userPass" >
-                <label>password</label>
+            <div class="button">
+                <button class="btn" type="submit" onclick="checkUserLogin()">Log on</button>
             </div>
-            
-                <button class="TransP" type="submit" onclick="checkUserLogin()">Log on</button>
-           
 
-            
         </form>
     </div>
+
+    <!-- <div class="Login-box" id="myForm">
+        <div class="container">
+            <div class="top">
+                <p>Admin Login</p>
+            </div>
+            <div class="form">
+                <div class="user">
+                    <input type="text" class="username" id="usernameLogin" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="pass">
+                    <input type="password" class="password" id="passwordLogin" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="button">
+                    <button class="btn" type="submit" onclick=checkUserLogin()>Login</button>
+                </div>
+            </div>
+            <div class="bottom">
+                <p class="forgot">Forgot Password?</p>
+                <p class="newUser">New User? <span>Sign Up</span></p>
+            </div>
+    
+        </div>
+    </div> -->
+
 
     
     

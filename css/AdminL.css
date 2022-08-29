@@ -1,6 +1,7 @@
 
-/* Button used to open the contact form - fixed at the bottom of the page (Changeing this will resolt in Admin login faluer) */
+
 .open-button {
+  font-family: 'Poppins', sans-serif;
   background-color: #555;
   color: white;
   padding: 16px 20px;
@@ -13,7 +14,7 @@
   width: 280px;
 }
 
-/* The popup form - hidden by default (Changeing this will resolt in Admin login faluer) */
+
 .form-popup {
   font-family: sans-serif;
   display: none;
@@ -23,7 +24,7 @@
   z-index: 9;
 }
 
-/* Add styles to the form container (Changeing this will resolt in Admin login faluer) */
+
 .form-container {
   background: rgba(0,0,0,.5);
   box-sizing: border-box;
@@ -193,3 +194,135 @@ transition: .5s;
   color: #fff;
 }
 
+
+.Login-box {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 35%;
+
+  font-family: sans-serif;
+  display: none;
+  bottom: 0;
+  z-index: 9;
+
+}
+
+.TransP {
+  background: transparent;
+  color: #fff;
+}
+
+.form-popup {
+  font-family: sans-serif;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  z-index: 9;
+}
+
+.body-UserL{
+ 
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #21252b;
+  font-family: 'Poppins', sans-serif
+}
+.container{
+  width: 340px;
+  border: 2px solid #30455e;
+  padding: 20px 30px;
+  border-radius: 20px;
+  background-color: #21252b;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+.top p{
+  font-size: 30px;
+  margin-bottom: 30px;
+  color: #30455e;
+}
+.form div{
+  margin: 35px 0;
+  position: relative;
+  width: 280px;
+}
+.form div input{
+  width: 100%;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 2px solid #30455e;
+  background: transparent;
+  color: #fff;
+}
+.form div input:focus{
+  outline: 1px solid #30455e;
+}
+
+.form div label{
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 15px;
+  font-size: 18px;
+  padding: 10px;
+  color: #cccc;
+  transition: 0.3s;
+}
+.form div input:focus ~ label,
+.form div input:valid ~ label{
+  color: #30455e;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  top: -13px;
+  left: 30px;
+  padding: 2px 5px;
+  background: rgba(33,37,43);
+}
+
+.btn{
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: rgba(33,37,43);
+  color: #fff;
+  border: 2px solid #30455e;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover{
+  background:#30455e;
+  color: #000;
+}
+.forgot{
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: fit-content;
+}
+.forgot:hover{
+  color: #30455e;
+}
+.newUser{
+  color: #fff;
+  font-size: 14px;
+}
+.newUser span{
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #30455e;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.newUser span:hover{
+  transform: scale(1.15);
+}

@@ -8,6 +8,7 @@ function AddUser() {
     let userEMail = document.getElementById("userEMail").value;
     let username = document.getElementById("username").value;
 
+
     let newUser = {
         // Id : id,
         Name : firstName,
@@ -57,17 +58,23 @@ function ShowEmp() {
 	}
 	
 	function AddNew(n) {
-        const DivContainer = document.getElementById("empDetails");
-	    const newDiv = document.createElement("div");
-        newDiv.id = 'employeeDiv'
-	    newDiv.classList.add("child-div");
-	    DivContainer.appendChild(newDiv);
-	    newDiv.innerHTML = "<h1 >"+"Username: "+ theUsers[n].Username +"</h1>"+"<br>"
-	                     +"Name: "+ theUsers[n].Name +"<br>"
-	                    +"Surname: "+ theUsers[n].Surname +"<br>"
-	                    +"Email: "+ theUsers[n].Email
-	                    +"<br>"
-	                    // +"<button>"+"click me"+"</button>";
+        //still busy
+        document.getElementById('empDetails').innerHTML = "<tr> <th>" + theUsers[n].Username + "</th> <th>" +  theUsers[n].Name + "</th> <th>" +  theUsers[n].Name + "</th> </tr>"
+                                                            
+        // const DivContainer = document.getElementById("empDetails");
+	    // const newDiv = document.createElement("div");
+        // newDiv.id = 'employeeDiv'
+	    // newDiv.classList.add("child-div");
+	    // DivContainer.appendChild(newDiv);
+	    // newDiv.innerHTML = "<h6><strong>"+"Username: "+ theUsers[n].Username +"</strong></h6>"+"<br>"
+	    //                  +"Name: "+ theUsers[n].Name +"<br>"
+	    //                 +"Surname: "+ theUsers[n].Surname +"<br>"
+	    //                 +"Email: "+ theUsers[n].Email
+	    //                 +"<br>"
+	    //                 // +"<button>"+"click me"+"</button>";
+
+        // document.getElementById('employeeDiv').style.margin = '1rem'
+        // document.getElementById('employeeDiv').style.padding = '0rem'
       
 	}
 	
