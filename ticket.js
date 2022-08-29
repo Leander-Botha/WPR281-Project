@@ -42,6 +42,21 @@ function populateFormValues()
     
 }
 
+function filterByProjects() {
+    let filterProj = document.getElementById('projectListFilter').value;
+    let ticketArray = JSON.parse(localStorage.getItem('Tickets'));
+
+    for (let m = 0; m < ticketArray.length ; m++) {
+        if (ticketArray[m].projectName == filterProj) {
+            console.log(ticketArray[m])
+        }
+        
+    }
+
+    
+}
+
+
 
 // create a ticket
 function ShowAddNewTickets(){

@@ -1,4 +1,4 @@
-// Create a new Project
+++// Create a new Project
 function newProj() {
     // let projID = theProjects.length + 1;
 	let nameP = document.getElementById("projName").value;

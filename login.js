@@ -10,8 +10,8 @@ let Admin =
    
 
 function checkUserLogin() {
-	let username = document.getElementById("username").value;
-	let password = document.getElementById("userPass").value;
+	let username = document.getElementById("usernameLogin").value;
+	let password = document.getElementById("userPassLogin").value;
 	    if(username == Admin.username && password == Admin.password)
 	    {
 	        console.log("User login successful" + '…ᘛ⁐̤ᕐᐷ');
